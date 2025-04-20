@@ -67,7 +67,7 @@
             background-color: rgba(255,255,255,0.3);
         }
 
-        /* Navigation styles */
+        /* Navigation styles - PC version */
         nav {
             background-color: #2a41b4;
             padding: 15px 0;
@@ -100,10 +100,33 @@
             text-decoration: underline;
         }
 
-        .mobile-contact-link {
+        /* Mobile navigation styles */
+        .mobile-nav {
             display: none;
+            background-color: #2a41b4;
+            padding: 15px 20px;
             text-align: center;
-            margin-top: 15px;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .mobile-nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+
+        .mobile-contact-link {
+            display: block;
+            margin-top: 10px;
         }
 
         .mobile-contact-link a {
@@ -111,9 +134,6 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
-            background-color: #3a57e8;
-            padding: 8px 16px;
-            border-radius: 20px;
         }
 
         /* Main content styles */
@@ -198,6 +218,17 @@
 
         /* Responsive styles */
         @media (max-width: 768px) {
+            /* Hide PC navigation */
+            nav {
+                display: none;
+            }
+
+            /* Show mobile navigation */
+            .mobile-nav {
+                display: block;
+            }
+
+            /* Header adjustments */
             .header {
                 padding: 20px 0;
             }
@@ -216,29 +247,6 @@
                 position: static;
                 transform: none;
                 margin-top: 10px;
-            }
-
-            .nav-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-            }
-
-            #nav-contact {
-                display: none;
-            }
-
-            .mobile-contact-link {
-                display: block;
-            }
-
-            nav a {
-                font-size: 14px;
-            }
-
-            .container {
-                padding: 0 15px;
             }
 
             .accordion-header {
@@ -260,12 +268,12 @@
                 font-size: 20px;
             }
 
-            .nav-links {
-                gap: 8px;
+            .mobile-nav-links {
+                gap: 10px;
             }
 
-            nav a {
-                font-size: 13px;
+            .mobile-nav-links a {
+                font-size: 14px;
             }
 
             .accordion-header {
@@ -289,6 +297,8 @@
         </div>
     </div>
 </div>
+
+<!-- PC Navigation (6 links in one line) -->
 <nav>
     <div class="nav-container">
         <div class="nav-links">
@@ -299,11 +309,23 @@
             <a href="faq.html" id="nav-faq">FAQ</a>
             <a href="contact.html" id="nav-contact">Байланыс</a>
         </div>
-        <div class="mobile-contact-link">
-            <a href="contact.html">Байланыс</a>
-        </div>
     </div>
 </nav>
+
+<!-- Mobile Navigation (5 links + Байланыс below) -->
+<div class="mobile-nav">
+    <div class="mobile-nav-links">
+        <a href="index.html" id="mobile-nav-home">Басты бет</a>
+        <a href="info.html" id="mobile-nav-info">Ақпарат</a>
+        <a href="cases.html" id="mobile-nav-types">Соттылық түрлері</a>
+        <a href="help.html" id="mobile-nav-help">Көмек</a>
+        <a href="faq.html" id="mobile-nav-faq">FAQ</a>
+    </div>
+    <div class="mobile-contact-link">
+        <a href="contact.html" id="mobile-nav-contact">Байланыс</a>
+    </div>
+</div>
+
 <div class="container">
     <h1 id="faq-title">Жиі қойылатын сұрақтар</h1>
 
@@ -432,9 +454,11 @@
     function updateTexts() {
         const t = translations[currentLang];
 
+        // Update header and language switcher
         document.querySelector('.logo').textContent = t.header;
         document.querySelector('.language-switcher').textContent = t.language;
 
+        // Update PC navigation
         document.getElementById('nav-home').textContent = t.nav.home;
         document.getElementById('nav-info').textContent = t.nav.info;
         document.getElementById('nav-types').textContent = t.nav.types;
@@ -442,19 +466,28 @@
         document.getElementById('nav-faq').textContent = t.nav.faq;
         document.getElementById('nav-contact').textContent = t.nav.contact;
 
-        document.querySelector('.mobile-contact-link a').textContent = t.nav.contact;
+        // Update mobile navigation
+        document.getElementById('mobile-nav-home').textContent = t.nav.home;
+        document.getElementById('mobile-nav-info').textContent = t.nav.info;
+        document.getElementById('mobile-nav-types').textContent = t.nav.types;
+        document.getElementById('mobile-nav-help').textContent = t.nav.help;
+        document.getElementById('mobile-nav-faq').textContent = t.nav.faq;
+        document.getElementById('mobile-nav-contact').textContent = t.nav.contact;
 
+        // Update FAQ title
         document.getElementById('faq-title').textContent = t.faqTitle;
 
+        // Update questions and answers
         for (let i = 1; i <= 7; i++) {
             document.getElementById(`question${i}`).textContent = t.questions[`q${i}`];
             document.getElementById(`answer${i}`).textContent = t.questions[`a${i}`];
         }
 
+        // Update footer
         document.querySelector('.footer').textContent = t.footer;
     }
 
-    // Initialize accordion
+    // Initialize accordion functionality
     document.addEventListener('DOMContentLoaded', function() {
         updateTexts();
 
