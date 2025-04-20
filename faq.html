@@ -176,31 +176,53 @@
         /* Мобильные стили */
         @media (max-width: 768px) {
             .header {
-                padding: 15px 50px 15px 15px;
+                padding: 20px 15px 15px;
                 font-size: 20px;
-                text-align: left;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
             .language-switcher {
-                position: absolute;
-                right: 10px;
-                top: 50%;
-                transform: translateY(-50%);
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin-top: 10px;
                 padding: 6px 12px;
                 font-size: 12px;
+                order: 2;
             }
 
             .nav-links {
-                gap: 8px;
-                justify-content: flex-start;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
                 padding: 0 10px;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
             }
 
-            .nav-links::-webkit-scrollbar {
-                display: none;
+            .nav-links::before {
+                content: "";
+                display: flex;
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+                margin-bottom: 5px;
+            }
+
+            .nav-links a:nth-child(1),
+            .nav-links a:nth-child(2),
+            .nav-links a:nth-child(3),
+            .nav-links a:nth-child(4),
+            .nav-links a:nth-child(5) {
+                order: 1;
+            }
+
+            .nav-links a:nth-child(6) {
+                order: 2;
             }
 
             nav a {
@@ -233,11 +255,11 @@
         @media (max-width: 480px) {
             .header {
                 font-size: 18px;
-                padding: 12px 45px 12px 12px;
+                padding: 15px 10px 10px;
             }
 
             .nav-links {
-                gap: 5px;
+                gap: 3px;
             }
 
             nav a {
