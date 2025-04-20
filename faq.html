@@ -251,7 +251,32 @@
                 font-size: 14px;
             }
         }
+      .telegram-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0088cc;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: transform 0.3s;
+        }
 
+        .telegram-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .telegram-btn img {
+            width: 32px;
+            height: 32px;
+        }
+        
         @media (max-width: 480px) {
             .header {
                 font-size: 18px;
@@ -351,6 +376,9 @@
 </div>
 <div class="footer">© 2025 Все права защищены</div>
 
+    <a href="https://t.me/kazjustice_bot" class="telegram-btn">
+        <img src="https://telegram.org/img/t_logo.png" alt="Telegram">
+    </a>
 <script>
     const translations = {
         kk: {
