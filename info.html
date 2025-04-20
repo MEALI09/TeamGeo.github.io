@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ақпарат</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #fff;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Обновленный header с центрированным логотипом */
+    .header {
+      background-color: #3a57e8;
+      color: white;
+      padding: 25px 0;
+      position: relative;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+    }
+
+    .language-switcher-container {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .language-switcher {
+      font-size: 14px;
+      color: white;
+      cursor: pointer;
+      background-color: rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .language-switcher:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+
+    /* Обновленное навигационное меню */
+    nav {
+      background-color: #2a41b4;
+      padding: 15px 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: opacity 0.3s;
+      padding: 5px 0;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    /* Остальные стили */
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .content-box {
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    ul li::before {
+      content: '•';
+      color: #3a57e8;
+      display: inline-block;
+      width: 1em;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .highlight-box {
+      background-color: #3a57e8;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      width: fit-content;
+      margin-top: 20px;
+    }
+
+    .info-bubble {
+      background-color: #3a57e8;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 16px;
+      max-width: 300px;
+      margin-top: 20px;
+      position: relative;
+      float: right;
+    }
+
+    .info-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: 10px;
+      right: -10px;
+      border-width: 10px;
+      border-style: solid;
+      border-color: transparent transparent transparent #3a57e8;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #3a57e8;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s;
+      margin-top: 30px;
+    }
+
+    .btn:hover {
+      background-color: #2a41b4;
+    }
+
+    .footer {
+      background-color: #1e1e1e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+    }
+
+    .telegram-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #0088cc;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 9999;
+      transition: transform 0.3s;
+    }
+
+    .telegram-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .telegram-btn img {
+      width: 32px;
+      height: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      .logo {
+        font-size: 22px;
+        margin-bottom: 15px;
+        padding-right: 0;
+      }
+
+      .language-switcher-container {
+        position: static;
+        transform: none;
+        margin-top: 10px;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Обновленный header с центрированным логотипом -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo" id="main-title">Қазақстанның азаматтық процестік құқығы</div>
+      <div class="language-switcher-container">
+        <div class="language-switcher" onclick="changeLanguage()" id="language-switcher">Русский</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Обновленное навигационное меню -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="index.html" id="nav-home">Басты бет</a>
+        <a href="info.html" id="nav-info">Ақпарат</a>
+        <a href="cases.html" id="nav-types">Соттылық түрлері</a>
+        <a href="help.html" id="nav-help">Көмек</a>
+        <a href="faq.html" id="nav-faq">FAQ</a>
+        <a href="contact.html" id="nav-contact">Байланыс</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Основное содержимое -->
+  <div class="container">
+    <div class="content-box">
+      <h2 id="title">"Соттылықты анықтау" веб-сайты</h2>
+      <p id="intro">"Соттылықты анықтау" веб-сайты – азаматтық істер бойынша соттылықты анықтауға және заңгердің көмегінсіз талап қою рәсімдеуге арналған онлайн платформа. Бұл ресурс қарапайым тілде тиімді әрі жылдам ақпарат алмасуды қамтамасыз ету мақсатында әзірленді.</p>
+
+      <h2 id="goal-title">Біздің негізгі мақсатымыз</h2>
+      <p id="goal">Азаматтық істер бойынша құқығы бұзылған тұлғаларға заң көмегін көрсету және олардың өздері талап қою дайындау арқылы құқықтық сауаттылықты арттыру. Веб-сайт арқылы пайдаланушылар нақты жауапкерге (жеке тұлға немесе заңды тұлғаға) қатысты сотқа шағым жаза алады.</p>
+
+      <h2 id="features-title">Сервистің мүмкіндіктері</h2>
+      <ul id="features-list">
+        <li>Азаматтық істер бойынша соттылық түрін анықтау</li>
+        <li>Талап қою бойынша тараптар және мерзімдер туралы ақпарат алу</li>
+        <li>Бұзылған құқық бойынша дұрыс талап қою рәсімдеуге мүмкіндік</li>
+      </ul>
+
+      <div class="info-bubble" id="bubble">
+        Жауапкер – сіздің кейсіңіз бойынша айып тағылып, оған жауап беретін тұлға
+      </div>
+
+      <h2 id="platform-usage-title">ПЛАТФОРМАНЫ ҚАЛАЙ ПАЙДАЛАНА АЛАСЫЗ?</h2>
+      <ol id="platform-usage-list">
+        <li>Веб-сайттың алғашқы «Басты бет» бөлімі.
+          Бұл бетте сіз сайт жайлы қысқаша анықтама ала аласыз, сонымен қатар мәселені анықтау үшін өзіңіз(талап қоюшы ретінде) және жауапкер туралы мәлімет беріп өтесіз.
+          Мәліметтер алдағы беттерде сізге дұрыс және нақты талап қою арызын дайындауға, соттылық түрін анықтауға көмек береді.</li>
+        <li>«Ақпарат» бөлімі.
+          Жалпы веб-сайт туралы толық мәліметтер беретін бөлім.
+          Мұнда:
+          • таныс емес сөздер, мысалы жауапкер деген кім?
+          • бұл веб-сайттан не жасай аламын?
+          • алған мәліметтеріме сенімді бола аламын ба?
+          • веб-сайтты қалай пайдалана аламын? деген сұрақтардың жауабын таба аласыз.</li>
+        <li>«Соттылық түрлері» ең негізгі бөлімі.
+          Веб-сайттың мақсатын жүзеге асыратын бөлім.
+          Сіздің мәселеге сәйкес туындаған дау бойынша қай сотқа шағым жазау керектігін осы беттен анықтайсыз.
+          Мысалы, сіз, Астана қаласының тұрғыны белгілі бір тұлғамен(сіздің жағдайда бұл жауапкер болып табылады!) келісімшарт жасастыңыз делік. Келісімшарттың ережелерін жасаған кезде дау туындаған жағдайда Астана қалалық сотында шешіледі деп көрсеттіңіздер. Сәйкесінше дау бойынша сіз талап қоюды Астана қалалық сотына жібересіз.
+          Веб-сайттың осы бетінде іздеу аймағына өз мәселеңізді енгізсеңіз, сізге дұрыс соттылық түрін анықтап береді.</li>
+        <li>«Көмек» бөлімі.
+          Егер талап қоюдан немесе соттылық түрін анықтаудан бөлек сұрақтар туындап, өз бетіңізше жауап таба алмасаңыз, осы бетте көрсетілген деректер бойынша заңгердің көмегіне жүгіне аласыз.
+          Маңызды! Көмек ақы төлеуді қажет етпейді.</li>
+        <li>«ЖҚС» бөлімі.
+          Бұл бетте сіз секілді талап қоюшылардың жиі қойылатын сұрақтарына жалпылама түрде жауаптар көрсетілген. Сізге керекті мәліметтер де қамтылған деп үміттенеміз.</li>
+        <li>«Байланыс» бөлімі.
+          Бұл бетте осы веб-сайтты жасаушылардың байланыс нөмірлері мен олармен байланысқа шығудың түрлері көрсетілген. Егер веб-сайтқа қатысты сұрақтар болса, хабарласып сұрай аласыз.
+          Маңызды! Веб-сайтты жасаушылар болашақ заңгерлер, егер заңи көмек қажет болса, тегін көмек беруге әрқашан дайынбыз.</li>
+      </ol>
+
+      <a href="https://t.me/kazjustice_bot" target="_blank" class="btn" id="chat-btn">Чатпен байланысу</a>
+    </div>
+  </div>
+
+  <div class="footer" id="footer">
+    © 2025 "Соттылықты анықтау" веб-сайты. Барлық құқықтар қорғалған.
+  </div>
+
+  <a class="telegram-btn" href="https://t.me/kazjustice_bot" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+  </a>
+
+  <script>
+    const translations = {
+      kk: {
+        mainTitle: 'Қазақстанның азаматтық процестік құқығы',
+        language: 'Русский',
+        nav: {
+          home: 'Басты бет',
+          info: 'Ақпарат',
+          types: 'Соттылық түрлері',
+          help: 'Көмек',
+          faq: 'FAQ',
+          contact: 'Байланыс'
+        },
+        title: '"Соттылықты анықтау" веб-сайты',
+        intro: '"Соттылықты анықтау" веб-сайты – азаматтық істер бойынша соттылықты анықтауға және заңгердің көмегінсіз талап қою рәсімдеуге арналған онлайн платформа. Бұл ресурс қарапайым тілде тиімді әрі жылдам ақпарат алмасуды қамтамасыз ету мақсатында әзірленді.',
+        goalTitle: 'Біздің негізгі мақсатымыз',
+        goal: 'Азаматтық істер бойынша құқығы бұзылған тұлғаларға заң көмегін көрсету және олардың өздері талап қою дайындау арқылы құқықтық сауаттылықты арттыру. Веб-сайт арқылы пайдаланушылар нақты жауапкерге (жеке тұлға немесе заңды тұлғаға) қатысты сотқа шағым жаза алады.',
+        featuresTitle: 'Сервистің мүмкіндіктері',
+        features: [
+          'Азаматтық істер бойынша соттылық түрін анықтау',
+          'Талап қою бойынша тараптар және мерзімдер туралы ақпарат алу',
+          'Бұзылған құқық бойынша дұрыс талап қою рәсімдеуге мүмкіндік'
+        ],
+        bubble: 'Жауапкер – сіздің кейсіңіз бойынша айып тағылып, оған жауап беретін тұлға',
+        platformUsageTitle: 'ПЛАТФОРМАНЫ ҚАЛАЙ ПАЙДАЛАНА АЛАСЫЗ?',
+        platformUsage: [
+          'Веб-сайттың алғашқы «Басты бет» бөлімі. Бұл бетте сіз сайт жайлы қысқаша анықтама ала аласыз, сонымен қатар мәселені анықтау үшін өзіңіз(талап қоюшы ретінде) және жауапкер туралы мәлімет беріп өтесіз. Мәліметтер алдағы беттерде сізге дұрыс және нақты талап қою арызын дайындауға, соттылық түрін анықтауға көмек береді.',
+          '«Ақпарат» бөлімі. Жалпы веб-сайт туралы толық мәліметтер беретін бөлім. Мұнда: • таныс емес сөздер, мысалы жауапкер деген кім? • бұл веб-сайттан не жасай аламын? • алған мәліметтеріме сенімді бола аламын ба? • веб-сайтты қалай пайдалана аламын? деген сұрақтардың жауабын таба аласыз.',
+          '«Соттылық түрлері» ең негізгі бөлімі. Веб-сайттың мақсатын жүзеге асыратын бөлім. Сіздің мәселеге сәйкес туындаған дау бойынша қай сотқа шағым жазау керектігін осы беттен анықтайсыз. Мысалы, сіз, Астана қаласының тұрғыны белгілі бір тұлғамен(сіздің жағдайда бұл жауапкер болып табылады!) келісімшарт жасастыңыз делік. Келісімшарттың ережелерін жасаған кезде дау туындаған жағдайда Астана қалалық сотында шешіледі деп көрсеттіңіздер. Сәйкесінше дау бойынша сіз талап қоюды Астана қалалық сотына жібересіз. Веб-сайттың осы бетінде іздеу аймағына өз мәселеңізді енгізсеңіз, сізге дұрыс соттылық түрін анықтап береді.',
+          '«Көмек» бөлімі. Егер талап қоюдан немесе соттылық түрін анықтаудан бөлек сұрақтар туындап, өз бетіңізше жауап таба алмасаңыз, осы бетте көрсетілген деректер бойынша заңгердің көмегіне жүгіне аласыз. Маңызды! Көмек ақы төлеуді қажет етпейді.',
+          '«ЖҚС» бөлімі. Бұл бетте сіз секілді талап қоюшылардың жиі қойылатын сұрақтарына жалпылама түрде жауаптар көрсетілген. Сізге керекті мәліметтер де қамтылған деп үміттенеміз.',
+          '«Байланыс» бөлімі. Бұл бетте осы веб-сайтты жасаушылардың байланыс нөмірлері мен олармен байланысқа шығудың түрлері көрсетілген. Егер веб-сайтқа қатысты сұрақтар болса, хабарласып сұрай аласыз. Маңызды! Веб-сайтты жасаушылар болашақ заңгерлер, егер заңи көмек қажет болса, тегін көмек беруге әрқашан дайынбыз.'
+        ],
+        chatBtn: 'Чатпен байланысу',
+        footer: '© 2025 "Соттылықты анықтау" веб-сайты. Барлық құқықтар қорғалған.'
+      },
+      ru: {
+        mainTitle: 'Гражданское процессуальное право Казахстана',
+        language: 'Қазақша',
+        nav: {
+          home: 'Главная',
+          info: 'Информация',
+          types: 'Виды подсудности',
+          help: 'Помощь',
+          faq: 'FAQ',
+          contact: 'Контакты'
+        },
+        title: 'Сайт "Определение подсудности"',
+        intro: 'Сайт "Определение подсудности" — это онлайн-платформа для определения подсудности по гражданским делам и подачи иска без помощи юриста. Этот ресурс создан для эффективного и быстрого обмена информацией на понятном языке.',
+        goalTitle: 'Наша основная цель',
+        goal: 'Оказывать юридическую помощь лицам, чьи права нарушены по гражданским делам, и повышать правовую грамотность за счёт подготовки иска самостоятельно. Через сайт пользователи могут подать жалобу в суд на конкретного ответчика (физическое или юридическое лицо).',
+        featuresTitle: 'Возможности сервиса',
+        features: [
+          'Определение подсудности по гражданским делам',
+          'Получение информации о сторонах и сроках подачи иска',
+          'Возможность правильно оформить иск по нарушенному праву'
+        ],
+        bubble: 'Ответчик — это лицо, которому предъявлено обвинение по вашему делу',
+        platformUsageTitle: 'КАК ИСПОЛЬЗОВАТЬ ПЛАТФОРМУ?',
+        platformUsage: [
+          'Первая часть веб-сайта «Главная страница». На этой странице вы можете получить краткое описание сайта, а также указать информацию о себе (как истце) и ответчике для определения проблемы. Информация поможет вам на следующих страницах правильно и точно подготовить исковое заявление и определить подсудность.',
+          'Раздел «Информация». Раздел, содержащий полную информацию о веб-сайте в целом. Здесь вы найдете ответы на вопросы: • незнакомые слова, например, кто такой ответчик? • что я могу сделать с помощью этого веб-сайта? • могу ли я доверять полученной информации? • как я могу использовать веб-сайт?',
+          'Раздел «Виды подсудности» — самый основной раздел. Раздел, реализующий цель веб-сайта. На этой странице вы определяете, в какой суд следует подавать жалобу по возникшему спору, соответствующему вашей проблеме. Например, допустим, вы, житель города Астана, заключили договор с определенным лицом (в вашем случае это ответчик!). Если при составлении условий договора возник спор, вы указали, что он будет разрешаться в городском суде Астаны. Соответственно, по спору вы подаете иск в городской суд Астаны. На этой странице веб-сайта, если вы введете свою проблему в поле поиска, вам будет определена правильная подсудность.',
+          'Раздел «Помощь». Если у вас возникли вопросы, не связанные с подачей иска или определением подсудности, и вы не можете найти ответ самостоятельно, вы можете обратиться за помощью к юристу по указанным на этой странице данным. Важно! Помощь не требует оплаты.',
+          'Раздел «FAQ». На этой странице приведены общие ответы на часто задаваемые вопросы истцов, подобных вам. Надеемся, что необходимая вам информация также включена.',
+          'Раздел «Контакты». На этой странице указаны контактные номера создателей этого веб-сайта и способы связи с ними. Если у вас есть вопросы, связанные с веб-сайтом, вы можете связаться и спросить. Важно! Создатели веб-сайта — будущие юристы, и если вам нужна юридическая помощь, мы всегда готовы помочь бесплатно.'
+        ],
+        chatBtn: 'Связаться в чате',
+        footer: '© 2025 Сайт "Определение подсудности". Все права защищены.'
+      }
+    };
+
+    let currentLang = "kk";
+
+    function changeLanguage() {
+      currentLang = currentLang === "kk" ? "ru" : "kk";
+      updateTexts();
+    }
+
+    function updateTexts() {
+      const t = translations[currentLang];
+
+      document.getElementById('main-title').textContent = t.mainTitle;
+      document.getElementById('language-switcher').textContent = t.language;
+
+      document.getElementById('nav-home').textContent = t.nav.home;
+      document.getElementById('nav-info').textContent = t.nav.info;
+      document.getElementById('nav-types').textContent = t.nav.types;
+      document.getElementById('nav-help').textContent = t.nav.help;
+      document.getElementById('nav-faq').textContent = t.nav.faq;
+      document.getElementById('nav-contact').textContent = t.nav.contact;
+
+      document.getElementById('title').textContent = t.title;
+      document.getElementById('intro').textContent = t.intro;
+      document.getElementById('goal-title').textContent = t.goalTitle;
+      document.getElementById('goal').textContent = t.goal;
+      document.getElementById('features-title').textContent = t.featuresTitle;
+
+      const featuresList = document.getElementById('features-list');
+      featuresList.innerHTML = '';
+      t.features.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        featuresList.appendChild(li);
+      });
+
+      document.getElementById('bubble').textContent = t.bubble;
+
+      document.getElementById('platform-usage-title').textContent = t.platformUsageTitle;
+
+      const platformUsageList = document.getElementById('platform-usage-list');
+      platformUsageList.innerHTML = '';
+      t.platformUsage.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        platformUsageList.appendChild(li);
+      });
+
+      document.getElementById('chat-btn').textContent = t.chatBtn;
+      document.getElementById('footer').textContent = t.footer;
+    }
+
+    // Инициализация при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+      updateTexts();
+    });
+  </script>
+</body>
+</html>

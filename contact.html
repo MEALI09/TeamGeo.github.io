@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Байланыс</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #3a57e8;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .header #header-title {
+            margin: 0;
+        }
+
+        .language-switcher {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+            background-color: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            border: none;
+        }
+
+        .language-switcher:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        nav {
+            background-color: #2a41b4;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: opacity 0.3s;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            background-color: #1e1e1e;
+            padding: 30px;
+            margin: 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            flex: 1;
+        }
+
+        h1 {
+            color: #3a57e8;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #444;
+        }
+
+        .footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        .telegram-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0088cc;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: transform 0.3s;
+        }
+
+        .telegram-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .telegram-btn img {
+            width: 32px;
+            height: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 0;
+                font-size: 20px;
+            }
+
+            .language-switcher {
+                position: static;
+                transform: none;
+                display: inline-block;
+                margin: 10px auto 0;
+                width: fit-content;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div id="header-title">Қазақстанның азаматтық процестік құқығы</div>
+    <button class="language-switcher" id="language-button" onclick="toggleLanguage()">Русский</button>
+</div>
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="index.html" id="nav-home">Басты бет</a>
+            <a href="info.html" id="nav-info">Ақпарат</a>
+            <a href="cases.html" id="nav-cases">Соттылық түрлері</a>
+            <a href="help.html" id="nav-help">Көмек</a>
+            <a href="faq.html" id="nav-faq">FAQ</a>
+            <a href="contact.html" id="nav-contact">Байланыс</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h1 id="contact-title">Бізбен байланысыңыз</h1>
+    <p id="contact-description">Сізге көмектесуге дайынбыз! Өз сұрағыңызды төмендегі байланыс деректері арқылы жолдаңыз:</p>
+
+    <p id="custom-contact-text">
+        Егерде сіздің мәселеңіз уникалды болса, бізбен байланысыңыз, заңды көмек көрсетуге дайынбыз, сұрайтын сұрақтарды төмендегі байланыс деректері арқылы хабарласыңыз:<br><br>
+        <strong>Телефон:</strong><br>
+        +7 701 880 1532<br>
+        +7 702 934 0380<br>
+        +7 778 365 0430<br>
+        +7 708 205 4162<br>
+        +7 700 662 1726<br><br>
+        Біздің универ атындағы юрисдикциялық клиника жасалуда, болашақта клиникамен хабар қосамыз!
+    </p>
+
+    <ul id="contact-list">
+        <li>📧 Email: support@civil-law.kz</li>
+        <li>📞 Телефон: +7 (700) 000 00 00</li>
+        <li>📍 Мекен-жай: Астана қаласы, Конституция көшесі, 12</li>
+    </ul>
+
+    <a href="https://t.me/kazjustice_bot" class="telegram-btn" target="_blank" aria-label="Telegram Bot">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </a>
+</div>
+<div class="footer" id="footer-text">© 2025 Барлық құқықтар қорғалған</div>
+
+<script>
+    let currentLanguage = localStorage.getItem('lang') || 'kk';
+
+    const translations = {
+        'kk': {
+            'header-title': 'Қазақстанның азаматтық процестік құқығы',
+            'language-button': 'Русский',
+            'nav-home': 'Басты бет',
+            'nav-info': 'Ақпарат',
+            'nav-cases': 'Соттылық түрлері',
+            'nav-help': 'Көмек',
+            'nav-faq': 'FAQ',
+            'nav-contact': 'Байланыс',
+            'contact-title': 'Бізбен байланысыңыз',
+            'contact-description': 'Сізге көмектесуге дайынбыз! Өз сұрағыңызды төмендегі байланыс деректері арқылы жолдаңыз:',
+            'custom-contact-text': `Егерде сіздің мәселеңіз уникалды болса, бізбен байланысыңыз, заңды көмек көрсетуге дайынбыз, сұрайтын сұрақтарды төмендегі байланыс деректері арқылы хабарласыңыз:<br><br>
+<strong>Телефон:</strong><br>
++7 701 880 1532<br>
++7 702 934 0380<br>
++7 778 365 0430<br>
++7 708 205 4162<br>
++7 700 662 1726<br><br>
+Біздің универ атындағы юрисдикциялық клиника жасалуда, болашақта клиникамен хабар қосамыз!`,
+            'footer-text': '© 2025 Барлық құқықтар қорғалған',
+            'contact-list': `
+                <li>📧 Email: support@civil-law.kz</li>
+                <li>📞 Телефон: +7 (700) 000 00 00</li>
+                <li>📍 Мекен-жай: Астана қаласы, Конституция көшесі, 12</li>`
+        },
+        'ru': {
+            'header-title': 'Гражданское процессуальное право Казахстана',
+            'language-button': 'Қазақша',
+            'nav-home': 'Главная',
+            'nav-info': 'Информация',
+            'nav-cases': 'Виды подсудности',
+            'nav-help': 'Помощь',
+            'nav-faq': 'FAQ',
+            'nav-contact': 'Контакты',
+            'contact-title': 'Свяжитесь с нами',
+            'contact-description': 'Мы готовы вам помочь! Отправьте ваш вопрос по следующим контактам:',
+            'custom-contact-text': `Если ваша ситуация уникальна, свяжитесь с нами — мы готовы оказать юридическую помощь. Все интересующие вопросы вы можете задать через контактные данные ниже:<br><br>
+<strong>Телефоны:</strong><br>
++7 701 880 1532<br>
++7 702 934 0380<br>
++7 778 365 0430<br>
++7 708 205 4162<br>
++7 700 662 1726<br><br>
+Сейчас создаётся юрисдикционная клиника при нашем университете — в будущем свяжем вас с ней!`,
+            'footer-text': '© 2025 Все права защищены',
+            'contact-list': `
+                <li>📧 Email: support@civil-law.kz</li>
+                <li>📞 Телефон: +7 (700) 000 00 00</li>
+                <li>📍 Адрес: г. Астана, ул. Конституции, 12</li>`
+        }
+    };
+
+    function toggleLanguage() {
+        currentLanguage = currentLanguage === 'kk' ? 'ru' : 'kk';
+        localStorage.setItem('lang', currentLanguage);
+        updateTexts();
+    }
+
+    function updateTexts() {
+        const langData = translations[currentLanguage];
+        for (const [key, value] of Object.entries(langData)) {
+            const element = document.getElementById(key);
+            if (element) {
+                if (key === 'custom-contact-text' || key === 'contact-list') {
+                    element.innerHTML = value;
+                } else {
+                    element.textContent = value;
+                }
+            }
+        }
+        document.documentElement.lang = currentLanguage;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        updateTexts();
+    });
+</script>
+</body>
+</html>

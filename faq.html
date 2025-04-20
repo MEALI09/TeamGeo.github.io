@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #3a57e8;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        nav {
+            background-color: #2a41b4;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: opacity 0.3s;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            background-color: #1e1e1e;
+            padding: 30px;
+            margin: 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            flex: 1;
+        }
+
+        h1 {
+            color: #3a57e8;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #444;
+        }
+
+        .footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        .language-switcher {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+            background-color: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            border: none;
+        }
+
+        .language-switcher:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        /* Стили для аккордеона */
+        .accordion {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #2a2a2a;
+        }
+
+        .accordion-header {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .accordion-header:hover {
+            background-color: #333;
+        }
+
+        .accordion-header::after {
+            content: '+';
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active::after {
+            content: '-';
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 20px;
+            background-color: #252525;
+        }
+
+        .accordion-content-inner {
+            padding: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 0;
+                font-size: 20px;
+            }
+
+            .language-switcher {
+                position: static;
+                transform: none;
+                display: block;
+                margin: 10px auto 0;
+                width: fit-content;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="header">Қазақстанның азаматтық процестік құқығы
+    <button class="language-switcher" onclick="changeLanguage()">Қазақша</button>
+</div>
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="index.html" id="nav-home">Басты бет</a>
+            <a href="info.html" id="nav-info">Ақпарат</a>
+            <a href="cases.html" id="nav-types">Соттылық түрлері</a>
+            <a href="help.html" id="nav-help">Көмек</a>
+            <a href="faq.html" id="nav-faq">FAQ</a>
+            <a href="contact.html" id="nav-contact">Байланыс</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h1 id="faq-title">Жиі қойылатын сұрақтар</h1>
+
+    <div class="accordion">
+        <div class="accordion-header" id="question1">Сотқа арыз беру үшін не қажет?</div>
+        <div class="accordion-content">
+            <div class="accordion-content-inner" id="answer1">Арыз, жеке куәлік көшірмесі, мемлекеттік баж туралы түбіртек және дәлелдемелер қажет.</div>
+        </div>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-header" id="question2">Істі қарау қанша уақыт алады?</div>
+        <div class="accordion-content">
+            <div class="accordion-content-inner" id="answer2">Орташа есеппен 1-3 ай ішінде шешіледі, бірақ істің күрделілігіне байланысты өзгеруі мүмкін.</div>
+        </div>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-header" id="question3">Сіз өзіңіздің тұрғылықты жеріңіз бойынша талап қоя аласыз ба?</div>
+        <div class="accordion-content">
+            <div class="accordion-content-inner" id="answer3">Негізінен талап жауапкердің тұрғылықты жері бойынша беріледі. Бірақ кейбір жағдайларда сіз өз мекенжайыңыз бойынша өтініш бере аласыз - мысалы, алимент өндіріп алу, балалармен некені бұзу, тұтынушылардың құқықтарын қорғау немесе жауапкер ҚР-да тұрмаса. Себебі көп жағдайда Қазақстан Республика Азаматтық істерде, жалпы істің құзыреті қараланады және сотта анықталады. Істің сотқа берілуі көбінесе ЖАУАПКЕР тұрғылықты қаласына қаралып анықталады.</div>
+        </div>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-header" id="question4">Егер жауапкер заңды тұлға (компания) болса, сотқа қайда жүгінуге болады?</div>
+        <div class="accordion-content">
+            <div class="accordion-content-inner" id="answer4">Талап қоюды компанияның тіркелген жері (заңды мекен-жайы) бойынша беруге болады. Егер шартта юрисдикция көрсетілген болса, бұл шартты, егер ол заңға қайшы келмесе, ескеру қажет. Бірақ Азаматтық істе және кодексінде көптеген нюанстар болады, оны кодекстен анықтау жөн, не сотта анықталады.</div>
+        </div>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-header" id="question5">Қажетті сот қай ауданда екенін қалай білуге болады?</div>
+        <div class="accordion-content">
+            <div class="accordion-content-inner" id="answer5">Жауапкердің мекен-жайы бойынша сот жүйесінің онлайн-картасын немесе ҚР Жоғарғы сотының сайтында қарауға болады - әрбір сот қызмет көрсететін барлық аталған аудандар бар.</div>
+        </div>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-header" id="question6">Егер сотталушы шетелде болса, сотқа қайда жүгіну керек?</div>
+        <div class="accordion-content">
+            <div class="accordion-content-inner" id="answer6">ҚР АІЖК нің 33 бабы бойынша егер жауапкер ҚР шегінен тыс жерде болса, талап қоюды өзінің тұрғылықты жері немесе тіркелген жері бойынша беруге болады. Бірақ жауапкер Қазақстан Республикасының азаматы болса, бұл жағдайда ол іс Халықаралық жеке құқықпен қаралуы жөн. Оны анықтауда сізге кәсіби халықаралық заңгер көмегі қажет болады.</div>
+        </div>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-header" id="question7">Егер соттылығына сенімді болмасаңыз, қайда жүгіну керек?</div>
+        <div class="accordion-content">
+            <div class="accordion-content-inner" id="answer7">Жақын маңдағы соттың кеңсесіне, адвокатқа жүгіну керек немесе Жоғарғы Соттың сайтында онлайн қызметтерді пайдалану керек - іс түрі немесе мекен-жайы бойынша соттылық туралы ақпарат бар. Егер талап қоюшы тегін түрде заңгерлік көмек қажеттенсе, көптеген юрисдикциялық клиникалар, юрисдикциялық консультанттар, не мемлекет сізге адвокатпен қамтамасыз ете алады.</div>
+        </div>
+    </div>
+</div>
+<div class="footer">© 2025 Все права защищены</div>
+
+<script>
+    const translations = {
+        kk: {
+            header: "Қазақстанның азаматтық процестік құқығы",
+            language: "Қазақша",
+            nav: {
+                home: "Басты бет",
+                info: "Ақпарат",
+                types: "Соттылық түрлері",
+                help: "Көмек",
+                faq: "FAQ",
+                contact: "Байланыс"
+            },
+            faqTitle: "Жиі қойылатын сұрақтар",
+            questions: {
+                q1: "Сотқа арыз беру үшін не қажет?",
+                a1: "Арыз, жеке куәлік көшірмесі, мемлекеттік баж туралы түбіртек және дәлелдемелер қажет.",
+                q2: "Істі қарау қанша уақыт алады?",
+                a2: "Орташа есеппен 1-3 ай ішінде шешіледі, бірақ істің күрделілігіне байланысты өзгеруі мүмкін.",
+                q3: "Сіз өзіңіздің тұрғылықты жеріңіз бойынша талап қоя аласыз ба?",
+                a3: "Негізінен талап жауапкердің тұрғылықты жері бойынша беріледі. Бірақ кейбір жағдайларда сіз өз мекенжайыңыз бойынша өтініш бере аласыз - мысалы, алимент өндіріп алу, балалармен некені бұзу, тұтынушылардың құқықтарын қорғау немесе жауапкер ҚР-да тұрмаса. Себебі көп жағдайда Қазақстан Республика Азаматтық істерде, жалпы істің құзыреті қараланады және сотта анықталады. Істің сотқа берілуі көбінесе ЖАУАПКЕР тұрғылықты қаласына қаралып анықталады.",
+                q4: "Егер жауапкер заңды тұлға (компания) болса, сотқа қайда жүгінуге болады?",
+                a4: "Талап қоюды компанияның тіркелген жері (заңды мекен-жайы) бойынша беруге болады. Егер шартта юрисдикция көрсетілген болса, бұл шартты, егер ол заңға қайшы келмесе, ескеру қажет. Бірақ Азаматтық істе және кодексінде көптеген нюанстар болады, оны кодекстен анықтау жөн, не сотта анықталады.",
+                q5: "Қажетті сот қай ауданда екенін қалай білуге болады?",
+                a5: "Жауапкердің мекен-жайы бойынша сот жүйесінің онлайн-картасын немесе ҚР Жоғарғы сотының сайтында қарауға болады - әрбір сот қызмет көрсететін барлық аталған аудандар бар.",
+                q6: "Егер сотталушы шетелде болса, сотқа қайда жүгіну керек?",
+                a6: "ҚР АІЖК нің 33 бабы бойынша егер жауапкер ҚР шегінен тыс жерде болса, талап қоюды өзінің тұрғылықты жері немесе тіркелген жері бойынша беруге болады. Бірақ жауапкер Қазақстан Республикасының азаматы болса, бұл жағдайда ол іс Халықаралық жеке құқықпен қаралуы жөн. Оны анықтауда сізге кәсіби халықаралық заңгер көмегі қажет болады.",
+                q7: "Егер соттылығына сенімді болмасаңыз, қайда жүгіну керек?",
+                a7: "Жақын маңдағы соттың кеңсесіне, адвокатқа жүгіну керек немесе Жоғарғы Соттың сайтында онлайн қызметтерді пайдалану керек - іс түрі немесе мекен-жайы бойынша соттылық туралы ақпарат бар. Егер талап қоюшы тегін түрде заңгерлік көмек қажеттенсе, көптеген юрисдикциялық клиникалар, юрисдикциялық консультанттар, не мемлекет сізге адвокатпен қамтамасыз ете алады."
+            },
+            footer: "© 2025 Барлық құқықтар қорғалған"
+        },
+        ru: {
+            header: "Гражданское процессуальное право Казахстана",
+            language: "Русский",
+            nav: {
+                home: "Главная",
+                info: "Информация",
+                types: "Виды подсудности",
+                help: "Помощь",
+                faq: "FAQ",
+                contact: "Контакты"
+            },
+            faqTitle: "Часто задаваемые вопросы",
+            questions: {
+                q1: "Что нужно для подачи иска в суд?",
+                a1: "Исковое заявление, копия удостоверения личности, квитанция об оплате госпошлины и доказательства.",
+                q2: "Сколько времени занимает рассмотрение дела?",
+                a2: "В среднем рассматривается в течение 1-3 месяцев, но может варьироваться в зависимости от сложности дела.",
+                q3: "Можно ли подать иск по месту своего жительства?",
+                a3: "Как правило, иск подаётся по месту жительства ответчика. Но в отдельных случаях можно подать по своему адресу - например, по алиментам, разводам с детьми, защите прав потребителей или если ответчик не проживает в РК. Потому что в большинстве случаев в Гражданском процессе Республики Казахстан рассматривается общая подсудность и определяется в суде. Передача дела в суд чаще всего определяется по месту жительства ОТВЕТЧИКА в соответствующем городе.",
+                q4: "Если ответчик - юридическое лицо (компания), куда подавать иск?",
+                a4: "Иск можно подать по месту регистрации компании (юридическому адресу). Если в договоре указана юрисдикция и она не противоречит закону, это также следует учитывать. Но в Гражданском процессе и кодексе есть много нюансов, которые лучше уточнять из кодекса или они определяются в суде.",
+                q5: "Как узнать, в какой районный суд обращаться?",
+                a5: "По адресу ответчика можно посмотреть онлайн-карту судебной системы или воспользоваться сайтом Верховного Суда РК - там указаны все районы, которые обслуживает каждый суд.",
+                q6: "Если ответчик находится за границей, куда обращаться?",
+                a6: "Согласно статье 33 ГПК РК, если ответчик за пределами РК, иск можно подать по своему месту жительства или регистрации. Но если ответчик является гражданином Республики Казахстан, то это дело должно рассматриваться в соответствии с международным частным правом. Для его определения вам понадобится помощь профессионального международного юриста.",
+                q7: "Если вы не уверены в подсудности, куда обратиться?",
+                a7: "Следует обратиться в ближайший суд, к адвокату или воспользоваться онлайн-сервисами сайта Верховного Суда - там есть информация о подсудности по типу дела или месту нахождения. Если истцу нужна бесплатная юридическая помощь, многие юридические клиники, юридические консультанты или государство могут предоставить вам адвоката."
+            },
+            footer: "© 2025 Все права защищены"
+        }
+    };
+
+    let currentLang = "kk";
+
+    function changeLanguage() {
+        currentLang = currentLang === "kk" ? "ru" : "kk";
+        updateTexts();
+    }
+
+    function updateTexts() {
+        const t = translations[currentLang];
+
+        document.querySelector('.header').firstChild.textContent = t.header;
+        document.querySelector('.language-switcher').textContent = t.language;
+
+        document.getElementById('nav-home').textContent = t.nav.home;
+        document.getElementById('nav-info').textContent = t.nav.info;
+        document.getElementById('nav-types').textContent = t.nav.types;
+        document.getElementById('nav-help').textContent = t.nav.help;
+        document.getElementById('nav-faq').textContent = t.nav.faq;
+        document.getElementById('nav-contact').textContent = t.nav.contact;
+
+        document.getElementById('faq-title').textContent = t.faqTitle;
+
+        for (let i = 1; i <= 7; i++) {
+            document.getElementById(`question${i}`).textContent = t.questions[`q${i}`];
+            document.getElementById(`answer${i}`).textContent = t.questions[`a${i}`];
+        }
+
+        document.querySelector('.footer').textContent = t.footer;
+    }
+
+    // Аккордеон
+    document.addEventListener('DOMContentLoaded', function() {
+        updateTexts();
+
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                const accordionItem = this.parentElement;
+                const accordionContent = this.nextElementSibling;
+
+                // Закрываем все открытые элементы
+                document.querySelectorAll('.accordion-content').forEach(content => {
+                    if (content !== accordionContent) {
+                        content.style.maxHeight = null;
+                        content.previousElementSibling.classList.remove('active');
+                    }
+                });
+
+                // Открываем/закрываем текущий элемент
+                if (accordionContent.style.maxHeight) {
+                    accordionContent.style.maxHeight = null;
+                    this.classList.remove('active');
+                } else {
+                    accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                    this.classList.add('active');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

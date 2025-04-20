@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юридическая помощь Казахстан</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #3a57e8;
+            color: white;
+            padding: 25px 0;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+        }
+
+        .language-toggle-btn {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+            background-color: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: none;
+            outline: none;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .language-toggle-btn:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        nav {
+            background-color: #2a41b4;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: opacity 0.3s;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .content-box {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1, h2 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #3a57e8;
+            padding-bottom: 10px;
+        }
+
+        p {
+            color: #ddd;
+        }
+
+        .footer {
+            background-color: #1e1e1e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+        }
+
+        .telegram-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0088cc;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: transform 0.3s;
+        }
+
+        .telegram-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .telegram-btn img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #444;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .tab-btn:after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #3a57e8;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .tab-btn.active {
+            color: white;
+        }
+
+        .tab-btn.active:after {
+            transform: scaleX(1);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .help-item {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .help-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(58, 87, 232, 0.3);
+        }
+
+        .help-item h3 {
+            color: #3a57e8;
+            margin-top: 0;
+        }
+
+        .help-item p {
+            margin-bottom: 0;
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .template-container {
+            margin-top: 30px;
+        }
+
+        .template-preview {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .template-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #444;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #3a57e8;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #2a41b4;
+        }
+
+        .page-indicator {
+            text-align: center;
+            margin: 10px 0;
+            color: #ddd;
+            font-weight: 500;
+        }
+
+        .sticker {
+            display: inline-block;
+            background-color: #3a57e8;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+
+            .language-toggle-btn {
+                position: static;
+                transform: none;
+                margin-top: 10px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .tab-btn {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-content">
+        <div class="logo" id="site-title">Қазақстанның азаматтық процестік құқығы</div>
+        <button class="language-toggle-btn" onclick="toggleLanguage()" id="language-btn">Қазақша</button>
+    </div>
+</header>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="index.html" id="nav-home">Басты бет</a>
+            <a href="info.html" id="nav-info">Ақпарат</a>
+            <a href="cases.html" id="nav-cases">Соттылық түрлері</a>
+            <a href="help.html" id="nav-help">Көмек</a>
+            <a href="faq.html" id="nav-faq">ЖҚС</a>
+            <a href="contact.html" id="nav-contact">Байланыс</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="content-box">
+        <h1 id="help-title">Юрисдикциялық көмек</h1>
+        <p id="help-description">Бұл парақшада сіз заңгерлік кеңес алуға (консультация) болатын ұйымдар, ақылы емес түрде заңды көмек беретін мекемелер және басқа қажетті ақпарат таба аласыз.</p>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'free-help')" id="tab1-btn">Тегін көмек</button>
+            <button class="tab-btn" onclick="openTab(event, 'paid-help')" id="tab2-btn">Ақылы көмек</button>
+            <button class="tab-btn" onclick="openTab(event, 'online-help')" id="tab3-btn">Онлайн көмек</button>
+            <button class="tab-btn" onclick="openTab(event, 'templates')" id="tab4-btn">Талап арыз үлгісі</button>
+        </div>
+
+        <div id="free-help" class="tab-content active">
+            <div class="help-item">
+                <h3><span class="icon">📞</span> <span class="help-item-title">119 — Мемлекеттік құқықтық көмек желісі <span class="sticker">Тегін</span></span></h3>
+                <p class="help-item-text">Қазақстан Республикасында кез келген аймақ және аудандардан тегін түрде ала алатын заңдық кеңес. Жұмыс атқаратын уақыты: Дүйсенбі - жұма, 09:00-18:00</p>
+            </div>
+
+            <div class="help-item">
+                <h3><span class="icon">🏛</span> <span class="help-item-title">Аймақтық адвокаттар палатасы <span class="sticker">Тегін</span></span></h3>
+                <p class="help-item-text">Әр облыста адвокаттар палатасы бар, кәсіби құқықтық кеңес беріледі. Бұл жерлерде төмен табыс алатын азаматтарға арнайы жолмен тегін көмек көрсетіле алады.</p>
+            </div>
+
+            <div class="help-item">
+                <h3><span class="icon">👩‍⚖️</span> <span class="help-item-title">Заңдық клиникалар <span class="sticker">Тегін</span></span></h3>
+                <p class="help-item-text">Ұлттық университеттердің заң факультетінде студенттер немесе профессорлар азаматтарға қажетті тегін заңдық көмек көрсетеді.</p>
+            </div>
+        </div>
+
+        <div id="paid-help" class="tab-content">
+            <div class="help-item">
+                <h3><span class="icon">⚖️</span> <span class="help-item-title">Жеке адвокаттар <span class="sticker">Ақылы</span></span></h3>
+                <p class="help-item-text">Егерде сіз қаражат жайында қатты қиналмасаңыз, сіздің құқықтарыңызды толық қорғай алатын, жеке кәсіби адвокаттардың көмегін көре аласыз. Әртүрлі құқық саласында өзінің заңды адвокаттар болады.</p>
+            </div>
+
+            <div class="help-item">
+                <h3><span class="icon">🏢</span> <span class="help-item-title">Заңды фирмалар <span class="sticker">Ақылы</span></span></h3>
+                <p class="help-item-text">Үлкен заңды фирмалар (Big 4) кешенді заңдық мәселелер шешуге көмек көрсетеді. Қазақстан Республикасынан жиналған заңгерлер кез келген даумен көмек көрсетеді.</p>
+            </div>
+
+            <div class="help-item">
+                <h3><span class="icon">📝</span> <span class="help-item-title">Құжаттарды дайындау қызметі <span class="sticker">Ақылы</span></span></h3>
+                <p class="help-item-text">Әртүрлі заңдық жағдайлық құжаттарды дайындау бойынша кәсіби көмек (өтініштер, келісімдер, қолхаттар, шағымдар және тағы басқа құжаттар).</p>
+            </div>
+        </div>
+
+        <div id="online-help" class="tab-content">
+            <div class="help-item">
+                <h3><span class="icon">🤖</span> <span class="help-item-title">Telegram боттары <span class="sticker">Тегін</span></span></h3>
+                <p class="help-item-text">Құқықтық мәселе бойынша сіздің сұрақтарға жауап беретін бірнеше тегін боттар бар.</p>
+            </div>
+
+            <div class="help-item">
+                <h3><span class="icon">💬</span> <span class="help-item-title">Онлайн консультация <span class="sticker">Ақылы/Тегін</span></span></h3>
+                <p class="help-item-text">Қазіргі таңда көптеген заңдық фирмалар онлайн форматта консультация көрсете алады, бұл сіздің уақытыңызды үнемдеуге мүмкіндік береді.</p>
+            </div>
+
+            <div class="help-item">
+                <h3><span class="icon">📱</span> <span class="help-item-title">Құқықтық қолданбалар <span class="sticker">Тегін</span></span></h3>
+                <p class="help-item-text">Сіздің смартфон, планшет, ноутбук және басқа электронды құрылғыларға арналған қолданбалар заңдық ақпаратпен танысуға және әртүрлі құжат үлгілерін қолдануға көмек береді.</p>
+            </div>
+        </div>
+
+        <div id="templates" class="tab-content">
+            <div class="template-container">
+                <h2 id="template-title">Талап арыз үлгісі</h2>
+                <div class="template-preview">
+                    <p id="template-description">Бұл шаблон азаматтық істер үшін қолданылады. Төменде шаблонның толтырылған мысалдарын көре аласыз.</p>
+                    <a href="иск_шаблон.pdf" class="download-btn" id="download-btn" download>PDF жүктеп алу</a>
+
+                    <div class="page-indicator" id="page1-indicator">1-бет</div>
+                    <img src="иск_шаблон_1.png" alt="Иск шаблоны 1-бет" class="template-image" id="template-page1">
+
+                    <div class="page-indicator" id="page2-indicator">2-бет</div>
+                    <img src="иск_шаблон_2.png" alt="Иск шаблоны 2-бет" class="template-image" id="template-page2">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div id="footer-text">© 2025 Барлық құқықтар қорғалған</div>
+</div>
+
+<a href="https://t.me/kazjustice_bot" class="telegram-btn">
+    <img src="https://telegram.org/img/t_logo.png" alt="Telegram">
+</a>
+
+<script>
+    let currentLanguage = 'kz'; // По умолчанию казахский
+
+    // Функция для переключения вкладок
+    function openTab(evt, tabName) {
+        var i, tabcontent, tabbuttons;
+
+        // Скрыть все вкладки
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+
+        // Убрать активный класс у всех кнопок
+        tabbuttons = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tabbuttons.length; i++) {
+            tabbuttons[i].classList.remove("active");
+        }
+
+        // Показать текущую вкладку и сделать кнопку активной
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
+    // Функция для переключения языков одной кнопкой
+    function toggleLanguage() {
+        currentLanguage = currentLanguage === 'kz' ? 'ru' : 'kz';
+        updateLanguage();
+    }
+
+    // Обновление интерфейса в зависимости от языка
+    function updateLanguage() {
+        const langBtn = document.getElementById('language-btn');
+
+        if (currentLanguage === 'kz') {
+            // Казахский язык
+            langBtn.textContent = 'Қазақша';
+            document.getElementById('site-title').textContent = 'Қазақстанның азаматтық процестік құқығы';
+
+            // Навигация
+            document.getElementById('nav-home').textContent = 'Басты бет';
+            document.getElementById('nav-info').textContent = 'Ақпарат';
+            document.getElementById('nav-cases').textContent = 'Соттылық түрлері';
+            document.getElementById('nav-help').textContent = 'Көмек';
+            document.getElementById('nav-faq').textContent = 'FAQ';
+            document.getElementById('nav-contact').textContent = 'Байланыс';
+
+            // Основной контент
+            document.getElementById('help-title').textContent = 'Юрисдикциялық көмек';
+            document.getElementById('help-description').textContent = 'Бұл парақшада сіз заңгерлік кеңес алуға (консультация) болатын ұйымдар, ақылы емес түрде заңды көмек беретін мекемелер және басқа қажетті ақпарат таба аласыз.';
+            document.getElementById('tab1-btn').textContent = 'Тегін көмек';
+            document.getElementById('tab2-btn').textContent = 'Ақылы көмек';
+            document.getElementById('tab3-btn').textContent = 'Онлайн көмек';
+            document.getElementById('tab4-btn').textContent = 'Талап арыз үлгісі';
+
+            // Контент вкладок
+            const helpItems = document.querySelectorAll('.help-item-title');
+            helpItems[0].textContent = '119 — Мемлекеттік құқықтық көмек желісі';
+            helpItems[1].textContent = 'Аймақтық адвокаттар палатасы';
+            helpItems[2].textContent = 'Заңдық клиникалар';
+            helpItems[3].textContent = 'Жеке адвокаттар';
+            helpItems[4].textContent = 'Заңды фирмалар';
+            helpItems[5].textContent = 'Құжаттарды дайындау қызметі';
+            helpItems[6].textContent = 'Telegram боттары';
+            helpItems[7].textContent = 'Онлайн консультация';
+            helpItems[8].textContent = 'Құқықтық қолданбалар';
+
+            const helpTexts = document.querySelectorAll('.help-item-text');
+            helpTexts[0].textContent = 'Қазақстан Республикасында кез келген аймақ және аудандардан тегін түрде ала алатын заңдық кеңес. Жұмыс атқаратын уақыты: Дүйсенбі - жұма, 09:00-18:00';
+            helpTexts[1].textContent = 'Әр облыста адвокаттар палатасы бар, кәсіби құқықтық кеңес беріледі. Бұл жерлерде төмен табыс алатын азаматтарға арнайы жолмен тегін көмек көрсетіле алады.';
+            helpTexts[2].textContent = 'Ұлттық университеттердің заң факультетінде студенттер немесе профессорлар азаматтарға қажетті тегін заңдық көмек көрсетеді.';
+            helpTexts[3].textContent = 'Егерде сіз қаражат жайында қатты қиналмасаңыз, сіздің құқықтарыңызды толық қорғай алатын, жеке кәсіби адвокаттардың көмегін көре аласыз. Әртүрлі құқық саласында өзінің заңды адвокаттар болады.';
+            helpTexts[4].textContent = 'Үлкен заңды фирмалар (Big 4) кешенді заңдық мәселелер шешуге көмек көрсетеді. Қазақстан Республикасынан жиналған заңгерлер кез келген даумен көмек көрсетеді.';
+            helpTexts[5].textContent = 'Әртүрлі заңдық жағдайлық құжаттарды дайындау бойынша кәсіби көмек (өтініштер, келісімдер, қолхаттар, шағымдар және тағы басқа құжаттар).';
+            helpTexts[6].textContent = 'Құқықтық мәселе бойынша сіздің сұрақтарға жауап беретін бірнеше тегін боттар бар.';
+            helpTexts[7].textContent = 'Қазіргі таңда көптеген заңдық фирмалар онлайн форматта консультация көрсете алады, бұл сіздің уақытыңызды үнемдеуге мүмкіндік береді.';
+            helpTexts[8].textContent = 'Сіздің смартфон, планшет, ноутбук және басқа электронды құрылғыларға арналған қолданбалар заңдық ақпаратпен танысуға және әртүрлі құжат үлгілерін қолдануға көмек береді.';
+
+            // Тексты для шаблона
+            document.getElementById('template-title').textContent = 'Талап арыз үлгісі';
+            document.getElementById('template-description').textContent = 'Бұл шаблон азаматтық істер үшін қолданылады. Төменде шаблонның толтырылған мысалдарын көре аласыз.';
+            document.getElementById('download-btn').textContent = 'PDF жүктеп алу';
+            document.getElementById('page1-indicator').textContent = '1-бет';
+            document.getElementById('page2-indicator').textContent = '2-бет';
+
+            // Стикеры
+            const stickers = document.querySelectorAll('.sticker');
+            stickers[0].textContent = 'Тегін';
+            stickers[1].textContent = 'Тегін';
+            stickers[2].textContent = 'Тегін';
+            stickers[3].textContent = 'Ақылы';
+            stickers[4].textContent = 'Ақылы';
+            stickers[5].textContent = 'Ақылы';
+            stickers[6].textContent = 'Тегін';
+            stickers[7].textContent = 'Ақылы/Тегін';
+            stickers[8].textContent = 'Тегін';
+
+            document.getElementById('footer-text').textContent = '© 2025 Барлық құқықтар қорғалған';
+
+        } else {
+            // Русский язык
+            langBtn.textContent = 'Русский';
+            document.getElementById('site-title').textContent = 'Гражданское процессуальное право Казахстана';
+
+            // Навигация
+            document.getElementById('nav-home').textContent = 'Главная';
+            document.getElementById('nav-info').textContent = 'Информация';
+            document.getElementById('nav-cases').textContent = 'Виды подсудности';
+            document.getElementById('nav-help').textContent = 'Помощь';
+            document.getElementById('nav-faq').textContent = 'FAQ';
+            document.getElementById('nav-contact').textContent = 'Контакты';
+
+            // Основной контент
+            document.getElementById('help-title').textContent = 'Юридическая помощь';
+            document.getElementById('help-description').textContent = 'На этой странице вы можете найти информацию об организациях, где можно получить юридическую консультацию, в том числе бесплатные услуги.';
+            document.getElementById('tab1-btn').textContent = 'Бесплатная помощь';
+            document.getElementById('tab2-btn').textContent = 'Платная помощь';
+            document.getElementById('tab3-btn').textContent = 'Онлайн помощь';
+            document.getElementById('tab4-btn').textContent = 'Шаблон иска';
+
+            // Контент вкладок
+            const helpItems = document.querySelectorAll('.help-item-title');
+            helpItems[0].textContent = '119 — Государственная юридическая служба';
+            helpItems[1].textContent = 'Областные коллегии адвокатов';
+            helpItems[2].textContent = 'Юридические клиники';
+            helpItems[3].textContent = 'Частные адвокаты';
+            helpItems[4].textContent = 'Юридические фирмы';
+            helpItems[5].textContent = 'Услуги по подготовке документов';
+            helpItems[6].textContent = 'Telegram боты';
+            helpItems[7].textContent = 'Онлайн консультации';
+            helpItems[8].textContent = 'Юридические приложения';
+
+            const helpTexts = document.querySelectorAll('.help-item-text');
+            helpTexts[0].textContent = 'В любом регионе Казахстана можно получить бесплатную юридическую консультацию. Часы работы: пн-пт 09:00-18:00.';
+            helpTexts[1].textContent = 'В каждой области есть консультационные пункты коллегий адвокатов, где оказывают бесплатную помощь гражданам с низким уровнем дохода.';
+            helpTexts[2].textContent = 'На юридических факультетах национальных университетов студенты и профессора оказывают гражданам бесплатную юридическую помощь.';
+            helpTexts[3].textContent = 'Если вам требуется полная защита ваших прав, можно работать с частными адвокатами. Есть адвокаты различных специализаций.';
+            helpTexts[4].textContent = 'Крупные юридические фирмы (Big 4) помогают решать комплексные правовые вопросы. Юристы со всего Казахстана могут помочь с любым спором.';
+            helpTexts[5].textContent = 'Профессиональная помощь в подготовке различных юридических документов (заявления, договоры, расписки, жалобы и другие документы).';
+            helpTexts[6].textContent = 'Есть несколько бесплатных ботов в Telegram, которые отвечают на вопросы по правовым вопросам.';
+            helpTexts[7].textContent = 'Сейчас многие юридические фирмы предлагают консультации в онлайн формате, что позволяет экономить ваше время.';
+            helpTexts[8].textContent = 'Специальные приложения для вашего смартфона, планшета, ноутбука и других электронных устройств помогут ознакомиться с правовой информацией и использовать различные образцы документов.';
+
+            // Тексты для шаблона
+            document.getElementById('template-title').textContent = 'Шаблон иска';
+            document.getElementById('template-description').textContent = 'Этот шаблон используется для гражданских дел. Ниже вы можете увидеть примеры заполнения шаблона.';
+            document.getElementById('download-btn').textContent = 'Скачать PDF';
+            document.getElementById('page1-indicator').textContent = 'Страница 1';
+            document.getElementById('page2-indicator').textContent = 'Страница 2';
+
+            // Стикеры
+            const stickers = document.querySelectorAll('.sticker');
+            stickers[0].textContent = 'Бесплатно';
+            stickers[1].textContent = 'Бесплатно';
+            stickers[2].textContent = 'Бесплатно';
+            stickers[3].textContent = 'Платно';
+            stickers[4].textContent = 'Платно';
+            stickers[5].textContent = 'Платно';
+            stickers[6].textContent = 'Бесплатно';
+            stickers[7].textContent = 'Платно/Бесплатно';
+            stickers[8].textContent = 'Бесплатно';
+
+            document.getElementById('footer-text').textContent = '© 2025 Все права защищены';
+        }
+    }
+
+    // Инициализация языка при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+        updateLanguage();
+    });
+</script>
+</body>
+</html>

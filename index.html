@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Азаматтық процестік сот</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      color: #fff;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      background-color: #3a57e8;
+      color: white;
+      padding: 25px 0;
+      position: relative;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+    }
+
+    .language-switcher-container {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .language-switcher {
+      font-size: 14px;
+      color: white;
+      cursor: pointer;
+      background-color: rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .language-switcher:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+
+    nav {
+      background-color: #2a41b4;
+      padding: 15px 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: opacity 0.3s;
+      padding: 5px 0;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1200px;
+      background-color: #1e1e1e;
+      padding: 30px;
+      margin: 30px auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      flex: 1;
+    }
+
+    .page-title {
+      color: #3a57e8;
+      font-size: 24px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #444;
+    }
+
+    select, input, button {
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.3s;
+      background-color: #2d2d2d;
+      color: white;
+      border: 1px solid #444;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    button {
+      background: #3a57e8;
+      color: white;
+    }
+
+    button:hover {
+      background: #2a41b4;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #ddd;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #2d2d2d;
+      border-left: 4px solid #3a57e8;
+      color: #ddd;
+    }
+
+    .telegram-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #0088cc;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 9999;
+      transition: transform 0.3s;
+    }
+
+    .telegram-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .telegram-btn img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      margin-top: auto;
+    }
+
+    /* Вертикальное разделение */
+    .split-layout {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .functional-column {
+      flex: 1;
+      padding: 20px;
+      background-color: #252525;
+      border-radius: 8px;
+      min-width: 400px;
+    }
+
+    .info-column {
+      flex: 1;
+      padding: 20px;
+      background-color: #252525;
+      border-radius: 8px;
+      overflow-y: auto;
+      max-height: 600px;
+    }
+
+    .divider {
+      width: 1px;
+      background-color: #444;
+      margin: 0 10px;
+    }
+
+    .info-text {
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+
+    .info-list {
+      padding-left: 20px;
+    }
+
+    .info-list li {
+      margin-bottom: 10px;
+    }
+
+    .info-subtitle {
+      color: #3a57e8;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 900px) {
+      .split-layout {
+        flex-direction: column;
+      }
+
+      .functional-column,
+      .info-column {
+        min-width: auto;
+        max-height: none;
+      }
+
+      .divider {
+        width: 100%;
+        height: 1px;
+        margin: 10px 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      .logo {
+        font-size: 22px;
+        margin-bottom: 15px;
+        padding-right: 0;
+      }
+
+      .language-switcher-container {
+        position: static;
+        transform: none;
+        margin-top: 10px;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .container {
+        padding: 20px;
+        margin: 20px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="logo" data-i18n="logo">Қазақстанның азаматтық процестік құқығы</div>
+      <div class="language-switcher-container">
+        <div class="language-switcher" onclick="changeLanguage()" data-i18n="language">Русский</div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="index.html" data-i18n="nav1">Басты бет</a>
+        <a href="info.html" data-i18n="nav2">Ақпарат</a>
+        <a href="cases.html" data-i18n="nav3">Соттылық түрлері</a>
+        <a href="help.html" data-i18n="nav4">Көмек</a>
+        <a href="faq.html" data-i18n="nav5">FAQ</a>
+        <a href="contact.html" data-i18n="nav6">Байланыс</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1 class="page-title" data-i18n="title">Біз туралы</h1>
+
+    <div class="split-layout">
+      <!-- Функциональная колонка -->
+      <div class="functional-column">
+        <div class="form-group">
+          <label for="plaintiff-type" data-i18n="plaintiffType">Истец:</label>
+          <select id="plaintiff-type">
+            <option value="физ" data-i18n="individual">Физическое лицо</option>
+            <option value="юр" data-i18n="legal">Юридическое лицо</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="defendant-type" data-i18n="defendantType">Ответчик:</label>
+          <select id="defendant-type">
+            <option value="физ" data-i18n="individual">Физическое лицо</option>
+            <option value="юр" data-i18n="legal">Юридическое лицо</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="defendant-city" data-i18n="defendantCity">Город ответчика:</label>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <input type="text" id="defendant-city" placeholder="Введите город" data-i18n-placeholder="cityPlaceholder">
+            <button onclick="getDefendantLocation()" data-i18n="detectLocation">Определить автоматически</button>
+          </div>
+        </div>
+
+        <button onclick="determineJurisdiction()" data-i18n="determineBtn">Определить подсудность</button>
+
+        <div id="result" class="result" style="display: none;">
+          <h3 data-i18n="resultTitle">Результат определения подсудности:</h3>
+          <div id="jurisdiction-info"></div>
+
+          <div class="court-info">
+            <h4 data-i18n="courtInfo">Информация о суде:</h4>
+            <div id="court-details"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Вертикальный разделитель -->
+      <div class="divider"></div>
+
+      <!-- Информационная колонка -->
+      <div class="info-column">
+        <div class="info-text" data-i18n="infoText1">Біз Қазақстан Республикасының азаматтық іс жүргізу құқығындағы юрисдикция және процессуалдық мерзімдер және басқа қосымшалар бойынша әрі қарапайым, әрі түсінікті және қолданушыларға пайда көрсететін сайт парақшасын -ресурс құру үшін бес жас жоғарғы құқық мектебінен құқық саласындағы маманнан тұратын командамыз.</div>
+
+        <div class="info-text" data-i18n="infoText2">Жалпы біздің жоба идеямыз өзімізден өткен жеке тәжірибеден туды. Әрқайсымыз оқу және тәжірибе, немесе қарапайым құқық маманы емес азаматтарға азаматтық сот ісін жүргізудегі негізгі мәселелер бойынша негізгі құрылымдық және нақты ақпаратты табу қаншалықты қиын әрі уақыт көп жұмсайтын жұмыс болатыны қолжетімсіз болатынына тап болдық. Бұл, көбінесе юрисдикция (нақты істі қай сот қарауы керек) және іс жүргізу мерзімдері (талаптарды, апелляциялық шағымдарды, кассацияларды беру мерзімдері және т.б.) сияқты тақырыптарға қатысты. Бұл аспектілер заңгер мамандар үшін де, қарапайым азаматтар (заң маманы емес) үшін де маңызы бар болады. Себебі олардың құқықтарын қорғау мүмкіндігіне тікелей әсер етеді, одан басқа процессуалды мерзімдерін өткізбеуге көмектеседі.</div>
+
+        <div class="info-text" data-i18n="infoText3">Біз осы онлайн парақша жасаған кезде алдымызға әркім азаматтық сот ісін жүргізудің бүкіл нюанстарын оңай түсіне алатын онлайн парақша құру міндетін қойдық. Біз құқықтық нормаларды жай ғана жүктеп қоймаймыз, оларды оңай тілмен, суреттермен, және қандай құжаттар тіркеу екенін көрсете түсіндіреміз. Сайтта жүктелген барлық ақпарат тексеруден өтеді және заңнамадағы өзгерістерге сәйкес жаңартылады.( Оны жасауға тырысамыз).</div>
+
+        <div class="info-text" data-i18n="infoText4">Біздің команда азаматтық процессуалды құқықты зерттеу жұмысын істейді. Кейбіреулеріміз нормативтік құқықтық актілерін талдап, басқалары онлайн парақшамызда контент жасап, қосымшаларды жасаудамыз, ал басқалары онлайн парақшамыздың визуалды дизайнға мән бөліп сол бағдарда жұмыс істеді. Ақпарат енгізуге және әрбір пайдаланушылармен өзара әрекеттесуге талпынамыз. Осындай проектіміз арқасында біз студенттер мен заңгерлер, сондай-ақ қарапайым азаматтар пайдалана алатын ыңғайлы, логикалық және ақпараттық ресурс жасай алдық.</div>
+
+        <div class="info-text" data-i18n="infoText5">Біз процессуалдық құқықтарды білу тек таңдаулылардың артықшылығы емес, барлығына қолжетімді мақсатында жұмыс жасадық. Бірақта бүкіл нюанстарды қамту мүмкін емес, сондықтан онлайн парақша қараған соң, консултациядан өтуге сұраймыз. Күрделі құқықтық мәселелерді, терминология, мазмұнының дәлдігі мен тереңдігі туралы қамтылып, қарапайым тілмен түсіндіруге тырысамыз.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer" data-i18n="footer">© 2025 Барлық құқықтар қорғалған</div>
+
+  <a class="telegram-btn" href="https://t.me/kazjustice_bot" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+  </a>
+
+  <script>
+    const courtDatabase = {
+      "Астана": {
+        "физ-физ": {
+          "name": "Межрайонный специализированный гражданский суд №2",
+          "address": "г. Астана, ул. Бейбитшилик, 25",
+          "phone": "+7 (7172) 123-456",
+          "type": "МСГД"
+        },
+        "юр-юр": {
+          "name": "Специализированный межрайонный экономический суд",
+          "address": "г. Астана, ул. Бокейхана, 4",
+          "phone": "+7 (7172) 234-567",
+          "type": "СМЭС"
+        },
+        "физ-юр": {
+          "name": "Специализированный межрайонный экономический суд",
+          "address": "г. Астана, ул. Бокейхана, 4",
+          "phone": "+7 (7172) 234-567",
+          "type": "СМЭС"
+        },
+        "юр-физ": {
+          "name": "Специализированный межрайонный экономический суд",
+          "address": "г. Астана, ул. Бокейхана, 4",
+          "phone": "+7 (7172) 234-567",
+          "type": "СМЭС"
+        }
+      },
+      "Алматы": {
+        "физ-физ": {
+          "name": "Межрайонный специализированный гражданский суд",
+          "address": "г. Алматы, пр. Абая, 90",
+          "phone": "+7 (727) 123-4567",
+          "type": "МСГД"
+        },
+        "юр-юр": {
+          "name": "Специализированный межрайонный экономический суд",
+          "address": "г. Алматы, ул. Жарокова, 215",
+          "phone": "+7 (727) 234-5678",
+          "type": "СМЭС"
+        },
+        "физ-юр": {
+          "name": "Специализированный межрайонный экономический суд",
+          "address": "г. Алматы, ул. Жарокова, 215",
+          "phone": "+7 (727) 234-5678",
+          "type": "СМЭС"
+        },
+        "юр-физ": {
+          "name": "Специализированный межрайонный экономический суд",
+          "address": "г. Алматы, ул. Жарокова, 215",
+          "phone": "+7 (727) 234-5678",
+          "type": "СМЭС"
+        }
+      },
+      "Шымкент": {
+        "физ-физ": {
+          "name": "Межрайонный специализированный гражданский суд",
+          "address": "г. Шымкент, ул. Желтоксан, 28",
+          "phone": "+7 (7252) 123-456",
+          "type": "МСГД"
+        },
+        "юр-юр": {
+          "name": "Специализированный межрайонный экономический суд",
+          "address": "г. Шымкент, пр. Тауке хана, 96",
+          "phone": "+7 (7252) 234-567",
+          "type": "СМЭС"
+        }
+      }
+    };
+
+    const translations = {
+      kk: {
+        "logo": "Қазақстанның азаматтық процестік құқығы",
+        "language": "Русский",
+        "nav1": "Басты бет",
+        "nav2": "Ақпарат",
+        "nav3": "Соттылық түрлері",
+        "nav4": "Көмек",
+        "nav5": "FAQ",
+        "nav6": "Байланыс",
+        "title": "Біз туралы",
+        "plaintiffType": "Тарып:",
+        "defendantType": "Жауапкер:",
+        "defendantCity": "Жауапкер қаласы:",
+        "cityPlaceholder": "Қаланы енгізіңіз",
+        "individual": "Жеке тұлға",
+        "legal": "Заңды тұлға",
+        "detectLocation": "Автоматты түрде анықтау",
+        "determineBtn": "Құзыреттілікті анықтау",
+        "resultTitle": "Құзыреттілікті анықтау нәтижесі:",
+        "courtInfo": "Сот туралы ақпарат:",
+        "jurisdictionRule": "Иск жауапкердің тұрғылықты жері бойынша сотқа жүктеледі (ҚР АӘК 30-бап)",
+        "courtType": "Сот түрі:",
+        "address": "Мекенжайы:",
+        "phone": "Телефоны:",
+        "infoText1": "Біз Қазақстан Республикасының азаматтық іс жүргізу құқығындағы юрисдикция және процессуалдық мерзімдер және басқа қосымшалар бойынша әрі қарапайым, әрі түсінікті және қолданушыларға пайда көрсететін сайт парақшасын -ресурс құру үшін бес жас жоғарғы құқық мектебінен құқық саласындағы маманнан тұратын командамыз.",
+        "infoText2": "Жалпы біздің жоба идеямыз өзімізден өткен жеке тәжірибеден туды. Әрқайсымыз оқу және тәжірибе, немесе қарапайым құқық маманы емес азаматтарға азаматтық сот ісін жүргізудегі негізгі мәселелер бойынша негізгі құрылымдық және нақты ақпаратты табу қаншалықты қиын әрі уақыт көп жұмсайтын жұмыс болатыны қолжетімсіз болатынына тап болдық. Бұл, көбінесе юрисдикция (нақты істі қай сот қарауы керек) және іс жүргізу мерзімдері (талаптарды, апелляциялық шағымдарды, кассацияларды беру мерзімдері және т.б.) сияқты тақырыптарға қатысты. Бұл аспектілер заңгер мамандар үшін де, қарапайым азаматтар (заң маманы емес) үшін де маңызы бар болады. Себебі олардың құқықтарын қорғау мүмкіндігіне тікелей әсер етеді, одан басқа процессуалды мерзімдерін өткізбеуге көмектеседі.",
+        "infoText3": "Біз осы онлайн парақша жасаған кезде алдымызға әркім азаматтық сот ісін жүргізудің бүкіл нюанстарын оңай түсіне алатын онлайн парақша құру міндетін қойдық. Біз құқықтық нормаларды жай ғана жүктеп қоймаймыз, оларды оңай тілмен, суреттермен, және қандай құжаттар тіркеу екенін көрсете түсіндіреміз. Сайтта жүктелген барлық ақпарат тексеруден өтеді және заңнамадағы өзгерістерге сәйкес жаңартылады.( Оны жасауға тырысамыз).",
+        "infoText4": "Біздің команда азаматтық процессуалды құқықты зерттеу жұмысын істейді. Кейбіреулеріміз нормативтік құқықтық актілерін талдап, басқалары онлайн парақшамызда контент жасап, қосымшаларды жасаудамыз, ал басқалары онлайн парақшамыздың визуалды дизайнға мән бөліп сол бағдарда жұмыс істеді. Ақпарат енгізуге және әрбір пайдаланушылармен өзара әрекеттесуге талпынамыз. Осындай проектіміз арқасында біз студенттер мен заңгерлер, сондай-ақ қарапайым азаматтар пайдалана алатын ыңғайлы, логикалық және ақпараттық ресурс жасай алдық.",
+        "infoText5": "Біз процессуалдық құқықтарды білу тек таңдаулылардың артықшылығы емес, барлығына қолжетімді мақсатында жұмыс жасадық. Бірақта бүкіл нюанстарды қамту мүмкін емес, сондықтан онлайн парақша қараған соң, консултациядан өтуге сұраймыз. Күрделі құқықтық мәселелерді, терминология, мазмұнының дәлдігі мен тереңдігі туралы қамтылып, қарапайым тілмен түсіндіруге тырысамыз.",
+        "footer": "© 2025 Барлық құқықтар қорғалған"
+      },
+      ru: {
+        "logo": "Гражданское процессуальное право Казахстана",
+        "language": "Қазақша",
+        "nav1": "Главная",
+        "nav2": "Информация",
+        "nav3": "Виды подсудности",
+        "nav4": "Помощь",
+        "nav5": "FAQ",
+        "nav6": "Контакты",
+        "title": "О нас",
+        "plaintiffType": "Истец:",
+        "defendantType": "Ответчик:",
+        "defendantCity": "Город ответчика:",
+        "cityPlaceholder": "Введите город",
+        "individual": "Физическое лицо",
+        "legal": "Юридическое лицо",
+        "detectLocation": "Определить автоматически",
+        "determineBtn": "Определить подсудность",
+        "resultTitle": "Результат определения подсудности:",
+        "courtInfo": "Информация о суде:",
+        "jurisdictionRule": "Иск предъявляется в суде по месту жительства ответчика (ст. 30 ГПК РК)",
+        "courtType": "Тип суда:",
+        "address": "Адрес:",
+        "phone": "Телефон:",
+        "infoText1": "Мы - команда специалистов в области права, выпускников ведущих юридических школ, создающая простой, понятный и полезный для пользователей веб-ресурс по вопросам юрисдикции, процессуальных сроков и других аспектов гражданского процессуального права Республики Казахстан.",
+        "infoText2": "Идея нашего проекта родилась из личного опыта. Каждый из нас в процессе учебы и практики сталкивался с тем, насколько сложно и трудоемко найти основную структурную и конкретную информацию по ключевым вопросам гражданского судопроизводства как для юристов, так и для обычных граждан (не юристов). Это касается, прежде всего, таких тем, как юрисдикция (какой именно суд должен рассматривать конкретное дело) и процессуальные сроки (сроки подачи исков, апелляционных жалоб, кассаций и т.д.). Эти аспекты важны как для юристов-профессионалов, так и для обычных граждан (не юристов), поскольку напрямую влияют на возможность защиты их прав и помогают не пропустить процессуальные сроки.",
+        "infoText3": "Создавая этот онлайн-ресурс, мы поставили перед собой задачу сделать платформу, где каждый мог бы легко понять все нюансы гражданского судопроизводства. Мы не просто публикуем правовые нормы, а объясняем их простым языком, с иллюстрациями и показываем, какие документы нужно подавать. Вся информация на сайте проверяется и обновляется в соответствии с изменениями в законодательстве (мы стараемся это делать).",
+        "infoText4": "Наша команда занимается исследованием гражданского процессуального права. Некоторые из нас анализируют нормативные правовые акты, другие создают контент для нашего сайта и разрабатывают приложения, а третьи работают над визуальным дизайном платформы. Мы стремимся предоставлять информацию и взаимодействовать с каждым пользователем. Благодаря такому подходу нам удалось создать удобный, логичный и информативный ресурс, который могут использовать студенты, юристы, а также обычные граждане.",
+        "infoText5": "Мы работали с целью сделать процессуальное право доступным для всех, а не только для избранных. Однако охватить все нюансы невозможно, поэтому после ознакомления с материалами сайта мы рекомендуем получить консультацию. Мы стараемся охватить сложные правовые вопросы, терминологию, обеспечить точность и глубину содержания, объясняя все простым языком.",
+        "footer": "© 2025 Все права защищены"
+      }
+    };
+
+    let currentLang = "kk";
+
+    function changeLanguage() {
+      currentLang = currentLang === "kk" ? "ru" : "kk";
+      updateTexts();
+    }
+
+    function updateTexts() {
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[currentLang][key]) {
+          el.innerText = translations[currentLang][key];
+        }
+      });
+
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (translations[currentLang][key]) {
+          el.placeholder = translations[currentLang][key];
+        }
+      });
+
+      // Обновляем options в select
+      const plaintiffSelect = document.getElementById("plaintiff-type");
+      const defendantSelect = document.getElementById("defendant-type");
+
+      [plaintiffSelect, defendantSelect].forEach(select => {
+        const selectedValue = select.value;
+        select.innerHTML = '';
+
+        const options = [
+          { value: "физ", key: "individual" },
+          { value: "юр", key: "legal" }
+        ];
+
+        options.forEach(opt => {
+          const option = document.createElement("option");
+          option.value = opt.value;
+          option.textContent = translations[currentLang][opt.key];
+          option.setAttribute("data-i18n", opt.key);
+          select.appendChild(option);
+        });
+
+        select.value = selectedValue;
+      });
+    }
+
+    function getDefendantLocation() {
+      if (navigator.geolocation) {
+        const geoElement = document.getElementById("defendant-city");
+        geoElement.value = currentLang === "kk"
+          ? "Орналасқан жеріңіз анықталуда..."
+          : "Определение вашего местоположения...";
+
+        navigator.geolocation.getCurrentPosition(
+          position => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=${currentLang}`)
+              .then(response => response.json())
+              .then(data => {
+                const city = data.address.city || data.address.town ||
+                            data.address.village || data.address.county;
+                if (city) {
+                  document.getElementById("defendant-city").value = city;
+                } else {
+                  alert(currentLang === "kk"
+                    ? "Қаланы анықтау мүмкін болмады"
+                    : "Не удалось определить город");
+                }
+              });
+          },
+          error => {
+            document.getElementById("defendant-city").value = "";
+            alert(currentLang === "kk"
+              ? "Орналасқан жерді анықтау қатесі"
+              : "Ошибка определения местоположения");
+          }
+        );
+      } else {
+        alert(currentLang === "kk"
+          ? "Браузеріңіз геолокацияны қолдамайды"
+          : "Геолокация не поддерживается вашим браузером");
+      }
+    }
+
+    function determineJurisdiction() {
+      const plaintiffType = document.getElementById("plaintiff-type").value;
+      const defendantType = document.getElementById("defendant-type").value;
+      const defendantCity = document.getElementById("defendant-city").value.trim();
+
+      if (!defendantCity) {
+        alert(currentLang === "kk"
+          ? "Жауапкер қаласын енгізіңіз"
+          : "Введите город ответчика");
+        return;
+      }
+
+      const caseType = `${plaintiffType}-${defendantType}`;
+      let court = null;
+
+      // Поиск города в базе (с учетом возможных вариантов написания)
+      const cityKeys = Object.keys(courtDatabase);
+      const foundCityKey = cityKeys.find(key =>
+        defendantCity.toLowerCase().includes(key.toLowerCase())
+      );
+
+      if (foundCityKey && courtDatabase[foundCityKey][caseType]) {
+        court = courtDatabase[foundCityKey][caseType];
+      } else {
+        // Если город не найден, используем общие правила
+        court = {
+          "name": currentLang === "kk"
+            ? "Жауапкердің тұратын жері бойынша аудандық сот"
+            : "Районный суд по месту жительства ответчика",
+          "address": defendantCity,
+          "type": defendantType === "физ" ? "МСГД" : "СМЭС"
+        };
+      }
+
+      // Отображаем результат
+      const resultDiv = document.getElementById("result");
+      const jurisdictionInfo = document.getElementById("jurisdiction-info");
+      const courtDetails = document.getElementById("court-details");
+
+      jurisdictionInfo.innerHTML = `
+        <p><strong>${translations[currentLang]["jurisdictionRule"]}</strong></p>
+        <p>${currentLang === "kk" ? "Тарыптың берілуі:" : "Иск подлежит подаче в:"} <strong>${court.name}</strong></p>
+      `;
+
+      courtDetails.innerHTML = `
+        <p><strong>${translations[currentLang]["courtType"]}</strong> ${court.type}</p>
+        <p><strong>${translations[currentLang]["address"]}</strong> ${court.address}</p>
+        ${court.phone ? `<p><strong>${translations[currentLang]["phone"]}</strong> ${court.phone}</p>` : ''}
+      `;
+
+      resultDiv.style.display = "block";
+    }
+
+    // Инициализация при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+      updateTexts();
+    });
+  </script>
+</body>
+</html>

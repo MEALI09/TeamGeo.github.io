@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гражданское процессуальное право</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #3a57e8;
+            color: white;
+            padding: 25px 0;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+        }
+
+        .language-switcher-container {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .language-switcher {
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+            background-color: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .language-switcher:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        nav {
+            background-color: #2a41b4;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: opacity 0.3s;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .content-box {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            border-bottom: 2px solid #3a57e8;
+        }
+
+        h2 {
+            font-size: 22px;
+            border-bottom: 1px solid #3a57e8;
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+
+        ul li::before {
+            content: '•';
+            color: #3a57e8;
+            display: inline-block;
+            width: 1em;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 10px 0;
+            margin-left: 20px;
+            position: relative;
+            color: #ddd;
+        }
+
+        p {
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .search-container {
+            position: relative;
+            margin: 20px 0;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 2px solid #444;
+            border-radius: 25px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+            background-color: #2d2d2d;
+            color: white;
+        }
+
+        .search-input:focus {
+            border-color: #3a57e8;
+            box-shadow: 0 0 10px rgba(58, 87, 232, 0.5);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+            font-size: 16px;
+        }
+
+        .search-label {
+            position: absolute;
+            left: 45px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            pointer-events: none;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .search-input:focus + .search-icon + .search-label,
+        .search-input:not(:placeholder-shown) + .search-icon + .search-label {
+            opacity: 0;
+            transform: translateY(-50%) translateX(10px);
+        }
+
+        .columns {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        .divider {
+            width: 1px;
+            background: #444;
+            margin: 0 15px;
+        }
+
+        .footer {
+            background-color: #1e1e1e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+        }
+
+        .telegram-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0088cc;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: transform 0.3s;
+        }
+
+        .telegram-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .telegram-btn img {
+            width: 32px;
+            height: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .logo {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+
+            .language-switcher-container {
+                position: static;
+                transform: none;
+                margin-top: 10px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .columns {
+                flex-direction: column;
+            }
+
+            .divider {
+                width: 100%;
+                height: 1px;
+                margin: 15px 0;
+            }
+
+            .search-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo" id="main-title">Қазақстанның азаматтық процестік құқығы</div>
+            <div class="language-switcher-container">
+                <div class="language-switcher" id="language-toggle">Русский</div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="index.html" id="nav-home">Басты бет</a>
+                <a href="info.html" id="nav-info">Ақпарат</a>
+                <a href="cases.html" id="nav-types">Соттылық түрлері</a>
+                <a href="help.html" id="nav-help">Көмек</a>
+                <a href="faq.html" id="nav-faq">FAQ</a>
+                <a href="contact.html" id="nav-contact">Байланыс</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content-box">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder=" " id="search-input">
+                <i class="fas fa-search search-icon"></i>
+                <span class="search-label" id="search-label">Іздеу...</span>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <h1 id="title">Соттылық туралы түсінік</h1>
+                    <p id="intro">Азаматтық іс жүргізу саласында соттылық ұғымы — бұл белгілі бір азаматтық істі қарау құқығы қай сотқа тиесілі екенін белгілейтін процессуалдық тәртіп. Соттылық институты дауларды әділетті, тиімді әрі заңды түрде шешу мақсатында соттар арасындағы өкілеттілікті нақты бөлуге мүмкіндік береді. Ол істерді сот жүйесінің қай деңгейіндегі және қай аумақтық юрисдикциядағы сот қарайтынын анықтайды.</p>
+
+                    <p id="intro2">Қазақстан Республикасының Азаматтық іс жүргізу кодексіне сәйкес, азаматтық сот ісін жүргізу барысында соттар азаматтық, отбасылық, еңбек, тұрғын үй, қаржы, әкімшілік және басқа да құқықтық қатынастардан туындайтын дауларды қарайды. Сонымен қатар, соттар экологиялық құқықтық қатынастар, мемлекеттік органдар мен лауазымды тұлғалардың әрекеттері (не әрекетсіздігі), сондай-ақ шетелдік тараптардың қатысуымен істерді қарауға уәкілетті.</p>
+
+                    <h2 id="types-title">Азаматтық істер бойынша соттылықтың түрлері</h2>
+                    <p id="types-intro">Соттылық екі негізгі түрге бөлінеді:</p>
+
+                    <h3 id="jurisdiction1-title">1. Топтық (инстанциялық) соттылық</h3>
+                    <p id="jurisdiction1-text">Топтық соттылық — бұл істің мәні бойынша қай деңгейдегі сотта (аудандық, қалалық, облыстық немесе Жоғарғы Сот) қаралуы керектігін белгілейтін жүйе.</p>
+                    <ul id="jurisdiction1-list">
+                        <li id="jurisdiction1-item1">Аудандық және қалалық соттар – Азаматтық іс жүргізу кодексінің 28–30-баптарында көзделген ерекше істерден басқа барлық азаматтық істерді бірінші сатыда қарайды.</li>
+                        <li id="jurisdiction1-item2">Облыстық соттар – апелляциялық, кейбір істер бойынша бірінші немесе кассациялық саты ретінде әрекет етеді.</li>
+                        <li id="jurisdiction1-item3">Қазақстан Республикасының Жоғарғы Соты – ерекше жағдайларда кейбір істерді бірінші сатыда қарайды. Мысалы:
+                            <ul>
+                                <li id="jurisdiction1-subitem1">ҚР Үкіметінің нормативтік құқықтық актілеріне қатысты даулар;</li>
+                                <li id="jurisdiction1-subitem2">ҚР Президенті мен Парламент депутаттарын сайлауға байланысты даулар;</li>
+                                <li id="jurisdiction1-subitem3">Республикалық референдум өткізуге қатысты мәселелер.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="column">
+                    <h3 id="jurisdiction2-title">2. Аумақтық (территориялық) соттылық</h3>
+                    <p id="jurisdiction2-text">Аумақтық соттылық — бұл азаматтық істің қай аумақтағы сотта қаралуы керектігін белгілейтін процессуалдық норма. Алайда, заңда көрсетілген ерекше жағдайларда, талап арызды талапкердің тұрғылықты жері бойынша немесе мүліктің орналасқан жері бойынша беруге болады.</p>
+                    <p id="jurisdiction2-types">Ол келесі түрлерге бөлінеді:</p>
+                    <ul id="jurisdiction2-list">
+                        <li id="jurisdiction2-item1"><strong id="general-jurisdiction">Жалпы соттылық</strong> — талап арыз жауапкердің тұрақты тұратын жері бойынша беріледі.</li>
+                        <li id="jurisdiction2-item2"><strong id="alternative-jurisdiction">Балама соттылық</strong> — заңда көзделген жағдайларда талап қоюшыға таңдау құқығы беріледі.
+                            <p id="jurisdiction2-example1">Мысалы, талап қоюшы дауды өзінің тұрғылықты жері бойынша қозғай алады.</p>
+                        </li>
+                        <li id="jurisdiction2-item3"><strong id="special-jurisdiction">Ерекше соттылық</strong> — жекелеген істер нақты бір соттардың құзыретіне арнайы заң арқылы жатқызылады. Мысалы, жылжымайтын мүлікке қатысты даулар мүліктің орналасқан жері бойынша ғана қаралады. Сондай-ақ, банкроттық істер борышкердің тіркелген жеріндегі сотта қаралуы тиіс.</li>
+                        <li id="jurisdiction2-item4"><strong id="contractual-jurisdiction">Шарттық соттылық</strong> — тараптар өзара келісім арқылы дауды қарауға уәкілетті сотты айқындай алады.
+                            <p id="jurisdiction2-example2">Бұл коммерциялық келісімшарттарда жиі кездеседі.</p>
+                        </li>
+                        <li id="jurisdiction2-item5"><strong id="connected-jurisdiction">Істің байланыстылығы бойынша соттылық</strong> — егер бірнеше талаптар бір-бірімен тығыз байланысты болса, олар бір сотта қаралады, бұл сот процесінің тиімділігін арттыруға бағытталған.</li>
+                    </ul>
+
+                    <p id="conclusion1">Азаматтық сот ісін жүргізудегі соттылық — құқықтық тәртіпті қамтамасыз ететін, сот төрелігінің негізін құрайтын маңызды құқықтық институт. Оның нақты белгіленуі істің тиісті сотта қаралуына, тараптардың процессуалдық құқықтарының сақталуына және даудың объективті шешілуіне ықпал етеді.</p>
+                    <p id="conclusion2">Соттылық түрлерін нақты түсіну заңгерлерге, сот органдары қызметкерлеріне және талап қоюшы мен жауапкер ретіндегі азаматтарға құқықтық дауларді дұрыс бағытта шешуге мүмкіндік береді.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer" id="footer">© 2025 Барлық құқықтар қорғалған</div>
+
+    <a href="https://t.me/kazjustice_bot" class="telegram-btn">
+        <img src="https://telegram.org/img/t_logo.png" alt="Telegram">
+    </a>
+
+<script>
+    // Начинаем с казахского языка
+    let currentLang = 'kk';
+
+    // Все переводы
+    const translations = {
+        kk: {
+            mainTitle: "Қазақстанның азаматтық процестік құқығы",
+            nav: {
+                home: "Басты бет",
+                info: "Ақпарат",
+                types: "Соттылық түрлері",
+                help: "Көмек",
+                faq: "FAQ",
+                contact: "Байланыс"
+            },
+            title: "Соттылық туралы түсінік",
+            intro: "Азаматтық іс жүргізу саласында соттылық ұғымы — бұл белгілі бір азаматтық істі қарау құқығы қай сотқа тиесілі екенін белгілейтін процессуалдық тәртіп. Соттылық институты дауларды әділетті, тиімді әрі заңды түрде шешу мақсатында соттар арасындағы өкілеттілікті нақты бөлуге мүмкіндік береді. Ол істерді сот жүйесінің қай деңгейіндегі және қай аумақтық юрисдикциядағы сот қарайтынын анықтайды.",
+            intro2: "Қазақстан Республикасының Азаматтық іс жүргізу кодексіне сәйкес, азаматтық сот ісін жүргізу барысында соттар азаматтық, отбасылық, еңбек, тұрғын үй, қаржы, әкімшілік және басқа да құқықтық қатынастардан туындайтын дауларды қарайды. Сонымен қатар, соттар экологиялық құқықтық қатынастар, мемлекеттік органдар мен лауазымды тұлғалардың әрекеттері (не әрекетсіздігі), сондай-ақ шетелдік тараптардың қатысуымен істерді қарауға уәкілетті.",
+            typesTitle: "Азаматтық істер бойынша соттылықтың түрлері",
+            typesIntro: "Соттылық екі негізгі түрге бөлінеді:",
+            jurisdiction1Title: "1. Топтық (инстанциялық) соттылық",
+            jurisdiction1Text: "Топтық соттылық — бұл істің мәні бойынша қай деңгейдегі сотта (аудандық, қалалық, облыстық немесе Жоғарғы Сот) қаралуы керектігін белгілейтін жүйе.",
+            jurisdiction1Item1: "Аудандық және қалалық соттар – Азаматтық іс жүргізу кодексінің 28–30-баптарында көзделген ерекше істерден басқа барлық азаматтық істерді бірінші сатыда қарайды.",
+            jurisdiction1Item2: "Облыстық соттар – апелляциялық, кейбір істер бойынша бірінші немесе кассациялық саты ретінде әрекет етеді.",
+            jurisdiction1Item3: "Қазақстан Республикасының Жоғарғы Соты – ерекше жағдайларда кейбір істерді бірінші сатыда қарайды. Мысалы:",
+            jurisdiction1Subitem1: "ҚР Үкіметінің нормативтік құқықтық актілеріне қатысты даулар;",
+            jurisdiction1Subitem2: "ҚР Президенті мен Парламент депутаттарын сайлауға байланысты даулар;",
+            jurisdiction1Subitem3: "Республикалық референдум өткізуге қатысты мәселелер.",
+            jurisdiction2Title: "2. Аумақтық (территориялық) соттылық",
+            jurisdiction2Text: "Аумақтық соттылық — бұл азаматтық істің қай аумақтағы сотта қаралуы керектігін белгілейтін процессуалдық норма. Алайда, заңда көрсетілген ерекше жағдайларда, талап арызды талапкердің тұрғылықты жері бойынша немесе мүліктің орналасқан жері бойынша беруге болады.",
+            jurisdiction2Types: "Ол келесі түрлерге бөлінеді:",
+            jurisdiction2Item1: "<strong id='general-jurisdiction'>Жалпы соттылық</strong> — талап арыз жауапкердің тұрақты тұратын жері бойынша беріледі.",
+            jurisdiction2Item2: "<strong id='alternative-jurisdiction'>Балама соттылық</strong> — заңда көзделген жағдайларда талап қоюшыға таңдау құқығы беріледі.",
+            jurisdiction2Item3: "<strong id='special-jurisdiction'>Ерекше соттылық</strong> — жекелеген істер нақты бір соттардың құзыретіне арнайы заң арқылы жатқызылады. Мысалы, жылжымайтын мүлікке қатысты даулар мүліктің орналасқан жері бойынша ғана қаралады. Сондай-ақ, банкроттық істер борышкердің тіркелген жеріндегі сотта қаралуы тиіс.",
+            jurisdiction2Item4: "<strong id='contractual-jurisdiction'>Шарттық соттылық</strong> — тараптар өзара келісім арқылы дауды қарауға уәкілетті сотты айқындай алады.",
+            jurisdiction2Item5: "<strong id='connected-jurisdiction'>Істің байланыстылығы бойынша соттылық</strong> — егер бірнеше талаптар бір-бірімен тығыз байланысты болса, олар бір сотта қаралады, бұл сот процесінің тиімділігін арттыруға бағытталған.",
+            generalJurisdiction: "Жалпы соттылық",
+            alternativeJurisdiction: "Балама соттылық",
+            specialJurisdiction: "Ерекше соттылық",
+            contractualJurisdiction: "Шарттық соттылық",
+            connectedJurisdiction: "Істің байланыстылығы бойынша соттылық",
+            jurisdiction2Example1: "Мысалы, талап қоюшы дауды өзінің тұрғылықты жері бойынша қозғай алады.",
+            jurisdiction2Example2: "Бұл коммерциялық келісімшарттарда жиі кездеседі.",
+            conclusion1: "Азаматтық сот ісін жүргізудегі соттылық — құқықтық тәртіпті қамтамасыз ететін, сот төрелігінің негізін құрайтын маңызды құқықтық институт. Оның нақты белгіленуі істің тиісті сотта қаралуына, тараптардың процессуалдық құқықтарының сақталуына және даудың объективті шешілуіне ықпал етеді.",
+            conclusion2: "Соттылық түрлерін нақты түсіну заңгерлерге, сот органдары қызметкерлеріне және талап қоюшы мен жауапкер ретіндегі азаматтарға құқықтық дауларді дұрыс бағытта шешуге мүмкіндік береді.",
+            footer: "© 2025 Барлық құқықтар қорғалған",
+            buttonText: "Русский",
+            searchPlaceholder: "Іздеу..."
+        },
+        ru: {
+            mainTitle: "Гражданское процессуальное право Казахстана",
+            nav: {
+                home: "Главная",
+                info: "Информация",
+                types: "Виды подсудности",
+                help: "Помощь",
+                faq: "FAQ",
+                contact: "Контакты"
+            },
+            title: "Понятие подсудности",
+            intro: "Подсудность в гражданском судопроизводстве — это процессуальный порядок, определяющий, в каком суде должно рассматриваться конкретное гражданское дело. Институт подсудности позволяет четко распределить компетенцию между судами для справедливого, эффективного и законного разрешения споров. Она определяет, в суде какого уровня и в какой территориальной юрисдикции должны рассматриваться дела.",
+            intro2: "В соответствии с Гражданским процессуальным кодексом Республики Казахстан, суды рассматривают споры, возникающие из гражданских, семейных, трудовых, жилищных, финансовых, административных и иных правоотношений. Кроме того, суды уполномочены рассматривать дела, связанные с экологическими правоотношениями, действиями (или бездействием) государственных органов и должностных лиц, а также дела с участием иностранных сторон.",
+            typesTitle: "Виды подсудности по гражданским делам",
+            typesIntro: "Подсудность делится на два основных вида:",
+            jurisdiction1Title: "1. Родовая (инстанционная) подсудность",
+            jurisdiction1Text: "Родовая подсудность — это система, определяющая, в суде какого уровня (районный, городской, областной или Верховный Суд) должно рассматриваться дело по существу.",
+            jurisdiction1Item1: "Районные и городские суды – рассматривают все гражданские дела по первой инстанции, за исключением особых дел, предусмотренных в статьях 28-30 ГПК РК.",
+            jurisdiction1Item2: "Областные суды – действуют в качестве апелляционной, а по некоторым делам – первой или кассационной инстанции.",
+            jurisdiction1Item3: "Верховный Суд Республики Казахстан – в особых случаях рассматривает некоторые дела в качестве суда первой инстанции. Например:",
+            jurisdiction1Subitem1: "Споры, связанные с нормативными правовыми актами Правительства РК;",
+            jurisdiction1Subitem2: "Споры, связанные с выборами депутатов Парламента и Президента РК;",
+            jurisdiction1Subitem3: "Вопросы, связанные с проведением республиканского референдума.",
+            jurisdiction2Title: "2. Территориальная подсудность",
+            jurisdiction2Text: "Территориальная подсудность — это процессуальная норма, определяющая, в суде какой территории должно рассматриваться гражданское дело. Однако, в особых случаях, предусмотренных законом, исковое заявление может быть подано по месту жительства истца или по месту нахождения имущества.",
+            jurisdiction2Types: "Она делится на следующие виды:",
+            jurisdiction2Item1: "<strong id='general-jurisdiction'>Общая подсудность</strong> — исковое заявление подается по месту постоянного жительства ответчика.",
+            jurisdiction2Item2: "<strong id='alternative-jurisdiction'>Альтернативная подсудность</strong> — в предусмотренных законом случаях истцу предоставляется право выбора.",
+            jurisdiction2Item3: "<strong id='special-jurisdiction'>Исключительная подсудность</strong> — отдельные дела специально отнесены законом к компетенции определенных судов. Например, споры о недвижимом имуществе рассматриваются исключительно по месту нахождения имущества. Также дела о банкротстве должны рассматриваться в суде по месту регистрации должника.",
+            jurisdiction2Item4: "<strong id='contractual-jurisdiction'>Договорная подсудность</strong> — стороны могут по взаимному соглашению определить суд, уполномоченный рассматривать спор.",
+            jurisdiction2Item5: "<strong id='connected-jurisdiction'>Подсудность по связи дел</strong> — если несколько требований тесно связаны между собой, они рассматриваются в одном суде, что направлено на повышение эффективности судебного процесса.",
+            generalJurisdiction: "Общая подсудность",
+            alternativeJurisdiction: "Альтернативная подсудность",
+            specialJurisdiction: "Исключительная подсудность",
+            contractualJurisdiction: "Договорная подсудность",
+            connectedJurisdiction: "Подсудность по связи дел",
+            jurisdiction2Example1: "Например, истец может возбудить дело по своему месту жительства.",
+            jurisdiction2Example2: "Это часто встречается в коммерческих договорах.",
+            conclusion1: "Подсудность в гражданском судопроизводстве — это важный правовой институт, обеспечивающий правопорядок и составляющий основу судебной власти. Ее четкое определение способствует рассмотрению дела в надлежащем суде, соблюдению процессуальных прав сторон и объективному разрешению спора.",
+            conclusion2: "Правильное понимание видов подсудности позволяет юристам, работникам судебных органов и гражданам, выступающим в качестве истцов и ответчиков, правильно направлять правовые споры для их разрешения.",
+            footer: "© 2025 Все права защищены",
+            buttonText: "Қазақша",
+            searchPlaceholder: "Поиск..."
+        }
+    };
+
+    // Функция для безопасного обновления элемента
+    function safeUpdateElement(id, content, isHTML = false) {
+        try {
+            const element = document.getElementById(id);
+            if (!element) {
+                console.warn(`Элемент с ID "${id}" не найден`);
+                return false;
+            }
+
+            if (isHTML) {
+                element.innerHTML = content;
+            } else {
+                element.textContent = content;
+            }
+            return true;
+        } catch (error) {
+            console.error(`Ошибка при обновлении элемента ${id}:`, error);
+            return false;
+        }
+    }
+
+    // Функция для применения переводов
+    function applyTranslations(lang) {
+        try {
+            const t = translations[lang];
+            if (!t) {
+                console.error('Переводы для языка', lang, 'не найдены');
+                return;
+            }
+
+            // Обновляем элементы с проверкой их существования
+            safeUpdateElement('main-title', t.mainTitle);
+            safeUpdateElement('nav-home', t.nav.home);
+            safeUpdateElement('nav-info', t.nav.info);
+            safeUpdateElement('nav-types', t.nav.types);
+            safeUpdateElement('nav-help', t.nav.help);
+            safeUpdateElement('nav-faq', t.nav.faq);
+            safeUpdateElement('nav-contact', t.nav.contact);
+
+            // Обновляем title страницы
+            document.title = t.nav.types + " | " + t.mainTitle;
+
+            // Основной контент
+            safeUpdateElement('title', t.title);
+            safeUpdateElement('intro', t.intro);
+            safeUpdateElement('intro2', t.intro2);
+            safeUpdateElement('types-title', t.typesTitle);
+            safeUpdateElement('types-intro', t.typesIntro);
+            safeUpdateElement('jurisdiction1-title', t.jurisdiction1Title);
+            safeUpdateElement('jurisdiction1-text', t.jurisdiction1Text);
+            safeUpdateElement('jurisdiction1-item1', t.jurisdiction1Item1);
+            safeUpdateElement('jurisdiction1-item2', t.jurisdiction1Item2);
+            safeUpdateElement('jurisdiction1-item3', t.jurisdiction1Item3, true);
+            safeUpdateElement('jurisdiction1-subitem1', t.jurisdiction1Subitem1);
+            safeUpdateElement('jurisdiction1-subitem2', t.jurisdiction1Subitem2);
+            safeUpdateElement('jurisdiction1-subitem3', t.jurisdiction1Subitem3);
+            safeUpdateElement('jurisdiction2-title', t.jurisdiction2Title);
+            safeUpdateElement('jurisdiction2-text', t.jurisdiction2Text);
+            safeUpdateElement('jurisdiction2-types', t.jurisdiction2Types);
+            safeUpdateElement('jurisdiction2-item1', t.jurisdiction2Item1, true);
+            safeUpdateElement('jurisdiction2-item2', t.jurisdiction2Item2, true);
+            safeUpdateElement('jurisdiction2-item3', t.jurisdiction2Item3, true);
+            safeUpdateElement('jurisdiction2-item4', t.jurisdiction2Item4, true);
+            safeUpdateElement('jurisdiction2-item5', t.jurisdiction2Item5, true);
+            safeUpdateElement('general-jurisdiction', t.generalJurisdiction);
+            safeUpdateElement('alternative-jurisdiction', t.alternativeJurisdiction);
+            safeUpdateElement('special-jurisdiction', t.specialJurisdiction);
+            safeUpdateElement('contractual-jurisdiction', t.contractualJurisdiction);
+            safeUpdateElement('connected-jurisdiction', t.connectedJurisdiction);
+            safeUpdateElement('jurisdiction2-example1', t.jurisdiction2Example1);
+            safeUpdateElement('jurisdiction2-example2', t.jurisdiction2Example2);
+            safeUpdateElement('conclusion1', t.conclusion1);
+            safeUpdateElement('conclusion2', t.conclusion2);
+            safeUpdateElement('footer', t.footer);
+
+            // Обновляем текст кнопки
+            safeUpdateElement('language-toggle', t.buttonText);
+
+            safeUpdateElement('search-label', t.searchPlaceholder);
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) searchInput.setAttribute('placeholder', " ");
+
+            // Устанавливаем атрибут lang для всего документа
+            document.documentElement.lang = lang;
+        } catch (error) {
+            console.error('Ошибка в applyTranslations:', error);
+        }
+    }
+
+    // Функция переключения языка
+    function toggleLanguage(event) {
+        try {
+            if (event) event.preventDefault();
+            currentLang = currentLang === 'kk' ? 'ru' : 'kk';
+            applyTranslations(currentLang);
+        } catch (error) {
+            console.error('Ошибка при переключении языка:', error);
+        }
+    }
+
+    // Инициализация при загрузке страницы
+    function initLanguageSwitcher() {
+        try {
+            // Применяем перевод по умолчанию
+            applyTranslations(currentLang);
+
+            // Назначаем обработчик события для кнопки переключения языка
+            const toggleBtn = document.getElementById('language-toggle');
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', toggleLanguage);
+                console.log('Кнопка переключения языка инициализирована');
+            } else {
+                console.error('Кнопка переключения языка не найдена');
+            }
+
+            // Поисковая функциональность
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    if (searchTerm.length > 2) {
+                        console.log('Searching for:', searchTerm);
+                    }
+                });
+            }
+        } catch (error) {
+            console.error('Ошибка инициализации:', error);
+        }
+    }
+
+    // Запускаем инициализацию после полной загрузки страницы
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        setTimeout(initLanguageSwitcher, 1);
+    } else {
+        document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+    }
+</script>
+</body>
+</html>
