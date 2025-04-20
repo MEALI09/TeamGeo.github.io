@@ -19,7 +19,7 @@
             min-height: 100vh;
         }
 
-        /* Обновленный header с центрированным логотипом */
+        /* Header styles */
         .header {
             background-color: #3a57e8;
             color: white;
@@ -67,7 +67,7 @@
             background-color: rgba(255,255,255,0.3);
         }
 
-        /* Обновленное навигационное меню */
+        /* Navigation styles */
         nav {
             background-color: #2a41b4;
             padding: 15px 0;
@@ -76,8 +76,6 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: center;
             padding: 0 20px;
         }
 
@@ -102,6 +100,23 @@
             text-decoration: underline;
         }
 
+        .mobile-contact-link {
+            display: none;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .mobile-contact-link a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            background-color: #3a57e8;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        /* Main content styles */
         .container {
             max-width: 1000px;
             margin: 30px auto;
@@ -109,64 +124,12 @@
             flex: 1;
         }
 
-        .content-box {
-            background-color: #1e1e1e;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        h1, h2, h3 {
+        h1 {
+            font-size: 24px;
             color: #fff;
             margin-bottom: 20px;
             padding-bottom: 10px;
-        }
-
-        h1 {
-            font-size: 24px;
             border-bottom: 2px solid #3a57e8;
-        }
-
-        h2 {
-            font-size: 22px;
-            border-bottom: 1px solid #3a57e8;
-        }
-
-        h3 {
-            font-size: 20px;
-        }
-
-        ul li::before {
-            content: '•';
-            color: #3a57e8;
-            display: inline-block;
-            width: 1em;
-        }
-
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        li {
-            padding: 10px 0;
-            margin-left: 20px;
-            position: relative;
-            color: #ddd;
-        }
-
-        p {
-            color: #ddd;
-            margin-bottom: 15px;
-        }
-
-        .footer {
-            background-color: #1e1e1e;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
         }
 
         /* Accordion styles */
@@ -208,7 +171,6 @@
 
         .accordion-header.active::after {
             content: '-';
-            transform: rotate(0deg);
         }
 
         .accordion-content {
@@ -222,6 +184,16 @@
             padding: 20px 25px;
             color: #ddd;
             line-height: 1.6;
+        }
+
+        /* Footer styles */
+        .footer {
+            background-color: #1e1e1e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
         }
 
         /* Responsive styles */
@@ -238,7 +210,6 @@
             .logo {
                 font-size: 22px;
                 margin-bottom: 15px;
-                padding-right: 0;
             }
 
             .language-switcher-container {
@@ -248,7 +219,18 @@
             }
 
             .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
                 gap: 10px;
+            }
+
+            #nav-contact {
+                display: none;
+            }
+
+            .mobile-contact-link {
+                display: block;
             }
 
             nav a {
@@ -279,9 +261,11 @@
             }
 
             .nav-links {
-                flex-direction: column;
-                align-items: center;
                 gap: 8px;
+            }
+
+            nav a {
+                font-size: 13px;
             }
 
             .accordion-header {
@@ -314,6 +298,9 @@
             <a href="help.html" id="nav-help">Көмек</a>
             <a href="faq.html" id="nav-faq">FAQ</a>
             <a href="contact.html" id="nav-contact">Байланыс</a>
+        </div>
+        <div class="mobile-contact-link">
+            <a href="contact.html">Байланыс</a>
         </div>
     </div>
 </nav>
@@ -455,6 +442,8 @@
         document.getElementById('nav-faq').textContent = t.nav.faq;
         document.getElementById('nav-contact').textContent = t.nav.contact;
 
+        document.querySelector('.mobile-contact-link a').textContent = t.nav.contact;
+
         document.getElementById('faq-title').textContent = t.faqTitle;
 
         for (let i = 1; i <= 7; i++) {
@@ -465,18 +454,16 @@
         document.querySelector('.footer').textContent = t.footer;
     }
 
-    // Аккордеон
+    // Initialize accordion
     document.addEventListener('DOMContentLoaded', function() {
         updateTexts();
 
         const accordionHeaders = document.querySelectorAll('.accordion-header');
-
         accordionHeaders.forEach(header => {
             header.addEventListener('click', function() {
-                const accordionItem = this.parentElement;
                 const accordionContent = this.nextElementSibling;
 
-                // Закрываем все открытые элементы
+                // Close other open items
                 document.querySelectorAll('.accordion-content').forEach(content => {
                     if (content !== accordionContent) {
                         content.style.maxHeight = null;
@@ -484,7 +471,7 @@
                     }
                 });
 
-                // Открываем/закрываем текущий элемент
+                // Toggle current item
                 if (accordionContent.style.maxHeight) {
                     accordionContent.style.maxHeight = null;
                     this.classList.remove('active');
@@ -493,16 +480,6 @@
                     this.classList.add('active');
                 }
             });
-        });
-
-        // Для мобильных устройств - закрытие по клику вне аккордеона
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.accordion') && window.innerWidth <= 768) {
-                document.querySelectorAll('.accordion-content').forEach(content => {
-                    content.style.maxHeight = null;
-                    content.previousElementSibling.classList.remove('active');
-                });
-            }
         });
     });
 </script>
