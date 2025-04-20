@@ -2,6 +2,7 @@
 <html lang="kk">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Байланыс</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -19,25 +20,39 @@
             min-height: 100vh;
         }
 
+        /* Header styles */
         .header {
             background-color: #3a57e8;
             color: white;
             padding: 25px 0;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
             position: relative;
         }
 
-        .header #header-title {
-            margin: 0;
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            position: relative;
         }
 
-        .language-switcher {
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+        }
+
+        .language-switcher-container {
             position: absolute;
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
+        }
+
+        .language-switcher {
             font-size: 14px;
             color: white;
             cursor: pointer;
@@ -46,12 +61,14 @@
             border-radius: 20px;
             transition: background-color 0.3s;
             border: none;
+            outline: none;
         }
 
         .language-switcher:hover {
             background-color: rgba(255,255,255,0.3);
         }
 
+        /* Navigation styles - PC version */
         nav {
             background-color: #2a41b4;
             padding: 15px 0;
@@ -60,8 +77,6 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: center;
             padding: 0 20px;
         }
 
@@ -86,34 +101,164 @@
             text-decoration: underline;
         }
 
+        /* Mobile navigation styles */
+        .mobile-nav {
+            display: none;
+            background-color: #2a41b4;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .mobile-nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+
+        .mobile-contact-link {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .mobile-contact-link a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        /* Main content styles */
         .container {
-            max-width: 1200px;
-            background-color: #1e1e1e;
-            padding: 30px;
+            max-width: 1000px;
             margin: 30px auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            padding: 0 20px;
             flex: 1;
         }
 
         h1 {
-            color: #3a57e8;
             font-size: 24px;
+            color: #fff;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 1px solid #444;
+            border-bottom: 2px solid #3a57e8;
         }
 
+        /* Accordion styles */
+        .accordion {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #2d2d2d;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .accordion-header {
+            padding: 18px 25px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 18px;
+            color: #fff;
+            background-color: #3a57e8;
+            transition: background-color 0.3s;
+            position: relative;
+            user-select: none;
+        }
+
+        .accordion-header:hover {
+            background-color: #2a41b4;
+        }
+
+        .accordion-header.active {
+            background-color: #2a41b4;
+        }
+
+        .accordion-header::after {
+            content: '+';
+            position: absolute;
+            right: 25px;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active::after {
+            content: '-';
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #1e1e1e;
+        }
+
+        .accordion-content-inner {
+            padding: 20px 25px;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        /* Footer styles */
         .footer {
-            background: #222;
+            background-color: #1e1e1e;
             color: white;
             text-align: center;
             padding: 20px;
             font-size: 14px;
-            margin-top: auto;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
         }
 
-        .telegram-btn {
+        /* New mobile-specific elements */
+        .mobile-contact-buttons {
+            display: none;
+            margin: 20px 0;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .contact-btn:hover {
+            opacity: 0.9;
+        }
+
+        .contact-btn i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .phone-btn {
+            background-color: #25D366;
+        }
+
+        .email-btn {
+            background-color: #EA4335;
+        }
+
+        .location-btn {
+            background-color: #4285F4;
+        }
+
+         .telegram-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -139,39 +284,116 @@
             height: 32px;
         }
 
+        /* Responsive styles */
         @media (max-width: 768px) {
+            /* Hide PC navigation */
+            nav {
+                display: none;
+            }
+
+            /* Show mobile navigation */
+            .mobile-nav {
+                display: block;
+            }
+
+            /* Header adjustments */
+            .header {
+                padding: 20px 0;
+            }
+
+            .header-content {
+                flex-direction: column;
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+
+            .language-switcher-container {
+                position: static;
+                transform: none;
+                margin-top: 10px;
+            }
+
+            .accordion-header {
+                padding: 15px 20px;
+                font-size: 16px;
+            }
+
+            .accordion-content-inner {
+                padding: 15px 20px;
+            }
+
+            /* Show mobile contact buttons */
+            .mobile-contact-buttons {
+                display: flex;
+            }
+
+            /* Hide regular contact list on mobile */
+            #contact-list {
+                display: none;
+            }
+
+            /* Adjust telegram button */
+            .telegram-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 12px;
+                width: 100%;
+            }
+
+            /* Adjust custom contact text */
+            #custom-contact-text {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+        }
+
+        @media (max-width: 480px) {
             .header {
                 padding: 15px 0;
+            }
+
+            .logo {
                 font-size: 20px;
             }
 
-            .language-switcher {
-                position: static;
-                transform: none;
-                display: inline-block;
-                margin: 10px auto 0;
-                width: fit-content;
-            }
-
-            .nav-links {
+            .mobile-nav-links {
                 gap: 10px;
             }
 
-            nav a {
+            .mobile-nav-links a {
                 font-size: 14px;
             }
 
-            .container {
-                padding: 20px;
-                margin: 20px auto;
+            .accordion-header {
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+
+            .accordion-content-inner {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+
+            .contact-btn {
+                font-size: 14px;
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
 <div class="header">
-    <div id="header-title">Қазақстанның азаматтық процестік құқығы</div>
-    <button class="language-switcher" id="language-button" onclick="toggleLanguage()">Русский</button>
+    <div class="header-content">
+        <div class="logo" id="header-title">Қазақстанның азаматтық процестік құқығы</div>
+        <div class="language-switcher-container">
+            <button class="language-switcher" id="language-button" onclick="toggleLanguage()">Русский</button>
+        </div>
+    </div>
 </div>
 <nav>
     <div class="nav-container">
@@ -185,6 +407,18 @@
         </div>
     </div>
 </nav>
+<div class="mobile-nav">
+    <div class="mobile-nav-links">
+        <a href="index.html" id="mobile-nav-home">Басты бет</a>
+        <a href="info.html" id="mobile-nav-info">Ақпарат</a>
+        <a href="cases.html" id="mobile-nav-cases">Соттылық түрлері</a>
+        <a href="help.html" id="mobile-nav-help">Көмек</a>
+        <a href="faq.html" id="mobile-nav-faq">FAQ</a>
+    </div>
+    <div class="mobile-contact-link">
+        <a href="contact.html" id="mobile-nav-contact">Байланыс</a>
+    </div>
+</div>
 <div class="container">
     <h1 id="contact-title">Бізбен байланысыңыз</h1>
     <p id="contact-description">Сізге көмектесуге дайынбыз! Өз сұрағыңызды төмендегі байланыс деректері арқылы жолдаңыз:</p>
@@ -200,15 +434,32 @@
         Біздің универ атындағы юрисдикциялық клиника жасалуда, болашақта клиникамен хабар қосамыз!
     </p>
 
+    <!-- Mobile contact buttons -->
+    <div class="mobile-contact-buttons">
+        <a href="tel:+77000000000" class="contact-btn phone-btn">
+            <i class="fas fa-phone-alt"></i>
+            <span id="mobile-call-text">Қоңырау шалыңыз</span>
+        </a>
+        <a href="mailto:support@civil-law.kz" class="contact-btn email-btn">
+            <i class="fas fa-envelope"></i>
+            <span id="mobile-email-text">Email жіберу</span>
+        </a>
+        <a href="https://maps.google.com?q=Астана қаласы, Конституция көшесі, 12" class="contact-btn location-btn" target="_blank">
+            <i class="fas fa-map-marker-alt"></i>
+            <span id="mobile-location-text">Орналасқан жері</span>
+        </a>
+    </div>
+
     <ul id="contact-list">
         <li>📧 Email: support@civil-law.kz</li>
         <li>📞 Телефон: +7 (700) 000 00 00</li>
         <li>📍 Мекен-жай: Астана қаласы, Конституция көшесі, 12</li>
     </ul>
 
-    <a href="https://t.me/kazjustice_bot" class="telegram-btn" target="_blank" aria-label="Telegram Bot">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+        <a href="https://t.me/kazjustice_bot" class="telegram-btn">
+        <img src="https://telegram.org/img/t_logo.png" alt="Telegram">
     </a>
+
 </div>
 <div class="footer" id="footer-text">© 2025 Барлық құқықтар қорғалған</div>
 
@@ -225,6 +476,12 @@
             'nav-help': 'Көмек',
             'nav-faq': 'FAQ',
             'nav-contact': 'Байланыс',
+            'mobile-nav-home': 'Басты бет',
+            'mobile-nav-info': 'Ақпарат',
+            'mobile-nav-cases': 'Соттылық түрлері',
+            'mobile-nav-help': 'Көмек',
+            'mobile-nav-faq': 'FAQ',
+            'mobile-nav-contact': 'Байланыс',
             'contact-title': 'Бізбен байланысыңыз',
             'contact-description': 'Сізге көмектесуге дайынбыз! Өз сұрағыңызды төмендегі байланыс деректері арқылы жолдаңыз:',
             'custom-contact-text': `Егерде сіздің мәселеңіз уникалды болса, бізбен байланысыңыз, заңды көмек көрсетуге дайынбыз, сұрайтын сұрақтарды төмендегі байланыс деректері арқылы хабарласыңыз:<br><br>
@@ -239,7 +496,10 @@
             'contact-list': `
                 <li>📧 Email: support@civil-law.kz</li>
                 <li>📞 Телефон: +7 (700) 000 00 00</li>
-                <li>📍 Мекен-жай: Астана қаласы, Конституция көшесі, 12</li>`
+                <li>📍 Мекен-жай: Астана қаласы, Конституция көшесі, 12</li>`,
+            'mobile-call-text': 'Қоңырау шалыңыз',
+            'mobile-email-text': 'Email жіберу',
+            'mobile-location-text': 'Орналасқан жері',
         },
         'ru': {
             'header-title': 'Гражданское процессуальное право Казахстана',
@@ -250,6 +510,12 @@
             'nav-help': 'Помощь',
             'nav-faq': 'FAQ',
             'nav-contact': 'Контакты',
+            'mobile-nav-home': 'Главная',
+            'mobile-nav-info': 'Информация',
+            'mobile-nav-cases': 'Виды подсудности',
+            'mobile-nav-help': 'Помощь',
+            'mobile-nav-faq': 'FAQ',
+            'mobile-nav-contact': 'Контакты',
             'contact-title': 'Свяжитесь с нами',
             'contact-description': 'Мы готовы вам помочь! Отправьте ваш вопрос по следующим контактам:',
             'custom-contact-text': `Если ваша ситуация уникальна, свяжитесь с нами — мы готовы оказать юридическую помощь. Все интересующие вопросы вы можете задать через контактные данные ниже:<br><br>
@@ -264,7 +530,10 @@
             'contact-list': `
                 <li>📧 Email: support@civil-law.kz</li>
                 <li>📞 Телефон: +7 (700) 000 00 00</li>
-                <li>📍 Адрес: г. Астана, ул. Конституции, 12</li>`
+                <li>📍 Адрес: г. Астана, ул. Конституции, 12</li>`,
+            'mobile-call-text': 'Позвонить',
+            'mobile-email-text': 'Написать email',
+            'mobile-location-text': 'Местоположение',
         }
     };
 
@@ -291,6 +560,20 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         updateTexts();
+
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
     });
 </script>
 </body>
