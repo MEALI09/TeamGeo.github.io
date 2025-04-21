@@ -307,28 +307,28 @@
             vertical-align: middle;
         }
 
-        @media (max-width: 768px) {
-            /* Изменяем только положение кнопки языка для мобильной версии */
+ @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                padding-bottom: 15px;
+                text-align: center;
+                padding: 25px 20px 15px;
+            }
+
+            .logo {
+                width: 100%;
+                margin: 0;
+                padding: 0;
             }
 
             .language-toggle-btn {
                 position: static;
                 transform: none;
                 margin-top: 15px;
-                align-self: center;
-                order: 1; /* Перемещаем кнопку после заголовка */
+                display: inline-block;
+                order: 1;
             }
 
-            .logo {
-                order: 0; /* Заголовок остается первым */
-                padding-right: 0;
-                margin-bottom: 0;
-            }
-
-            /* Остальные стили для мобильной версии остаются без изменений */
+            /* Остальные мобильные стили */
             .nav-links {
                 gap: 10px;
             }
