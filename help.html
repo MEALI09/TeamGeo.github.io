@@ -308,6 +308,27 @@
         }
 
         @media (max-width: 768px) {
+            /* Изменяем только положение кнопки языка для мобильной версии */
+            .header-content {
+                flex-direction: column;
+                padding-bottom: 15px;
+            }
+
+            .language-toggle-btn {
+                position: static;
+                transform: none;
+                margin-top: 15px;
+                align-self: center;
+                order: 1; /* Перемещаем кнопку после заголовка */
+            }
+
+            .logo {
+                order: 0; /* Заголовок остается первым */
+                padding-right: 0;
+                margin-bottom: 0;
+            }
+
+            /* Остальные стили для мобильной версии остаются без изменений */
             .nav-links {
                 gap: 10px;
             }
