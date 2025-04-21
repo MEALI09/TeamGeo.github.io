@@ -258,30 +258,26 @@
             background-color: #4285F4;
         }
 
-         .telegram-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+        .telegram-btn {
+            display: inline-block;
             background-color: #0088cc;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
             text-decoration: none;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            z-index: 9999;
-            transition: transform 0.3s;
+            margin-top: 15px;
+            transition: background-color 0.3s;
         }
 
         .telegram-btn:hover {
-            transform: scale(1.1);
+            background-color: #0077b5;
         }
 
         .telegram-btn img {
-            width: 32px;
-            height: 32px;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 8px;
         }
 
         /* Responsive styles */
@@ -456,10 +452,10 @@
         <li>📍 Мекен-жай: Астана қаласы, Конституция көшесі, 12</li>
     </ul>
 
-        <a href="https://t.me/kazjustice_bot" class="telegram-btn">
-        <img src="https://telegram.org/img/t_logo.png" alt="Telegram">
+    <a href="https://t.me/kazjustice_bot" class="telegram-btn" target="_blank" aria-label="Telegram Bot">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+        <span id="telegram-text">Telegram бот</span>
     </a>
-
 </div>
 <div class="footer" id="footer-text">© 2025 Барлық құқықтар қорғалған</div>
 
@@ -500,6 +496,7 @@
             'mobile-call-text': 'Қоңырау шалыңыз',
             'mobile-email-text': 'Email жіберу',
             'mobile-location-text': 'Орналасқан жері',
+            'telegram-text': 'Telegram бот'
         },
         'ru': {
             'header-title': 'Гражданское процессуальное право Казахстана',
@@ -534,6 +531,7 @@
             'mobile-call-text': 'Позвонить',
             'mobile-email-text': 'Написать email',
             'mobile-location-text': 'Местоположение',
+            'telegram-text': 'Telegram бот'
         }
     };
 
