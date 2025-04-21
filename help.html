@@ -307,101 +307,123 @@
             vertical-align: middle;
         }
 
- @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                padding: 25px 20px 15px;
-            }
-
-            .logo {
-                width: 100%;
-                margin: 0;
-                padding: 0;
-            }
-
-            .language-toggle-btn {
-                position: static;
-                transform: none;
-                margin-top: 15px;
-                display: inline-block;
-                order: 1;
-            }
-
-            /* Остальные мобильные стили */
-            .nav-links {
-                gap: 10px;
-            }
-
-            nav a {
-                font-size: 14px;
-            }
-
-            .tab-btn {
-                padding: 10px 15px;
-                font-size: 14px;
-            }
-
-            .content-box {
-                padding: 15px;
-            }
-
-            .help-item {
-                padding: 12px;
-            }
-
-            .help-item h3 {
-                font-size: 16px;
-            }
-
-            .template-preview {
-                padding: 12px;
-            }
-
-            .download-btn {
-                padding: 10px 20px;
-                width: 100%;
-                text-align: center;
-            }
+  @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            padding: 20px 15px;
+            text-align: center;
         }
 
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 22px;
-                padding-right: 80px; /* Оставляем место для кнопки языка */
-            }
-
-            .language-toggle-btn {
-                right: 10px;
-                padding: 6px 12px;
-                min-width: 70px;
-            }
-
-            .nav-links {
-                gap: 8px;
-            }
-
-            nav a {
-                font-size: 13px;
-            }
-
-            .container {
-                padding: 0 15px;
-                margin: 20px auto;
-            }
-
-            h1, h2 {
-                font-size: 20px;
-            }
-
-            .tab-btn {
-                padding: 8px 12px;
-            }
-
-            .icon {
-                font-size: 20px;
-            }
+        .logo {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
+            font-size: 22px;
+            line-height: 1.3;
         }
+
+        .language-toggle-btn {
+            position: relative;
+            top: auto;
+            right: auto;
+            transform: none;
+            margin: 15px auto 0;
+            display: inline-block;
+            width: auto;
+            max-width: 120px;
+        }
+
+        /* Остальные мобильные стили */
+        .nav-links {
+            gap: 8px;
+            justify-content: center;
+        }
+
+        nav a {
+            font-size: 13px;
+            padding: 5px 8px;
+        }
+
+        .container {
+            padding: 0 15px;
+        }
+
+        .content-box {
+            padding: 15px;
+        }
+
+        h1, h2 {
+            font-size: 20px;
+        }
+
+        .tab-btn {
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+
+        .help-item {
+            padding: 12px;
+        }
+
+        .help-item h3 {
+            font-size: 16px;
+        }
+
+        .download-btn {
+            padding: 10px 15px;
+            width: 100%;
+        }
+    }
+
+    /* Дополнительные стили для очень маленьких экранов */
+    @media (max-width: 480px) {
+        .logo {
+            font-size: 20px;
+        }
+
+        .language-toggle-btn {
+            padding: 6px 12px;
+            font-size: 13px;
+        }
+
+        nav a {
+            font-size: 12px;
+        }
+
+        .tab-btn {
+            padding: 6px 10px;
+        }
+    }
+
+    /* Все остальные стили остаются без изменений */
+    nav {
+        background-color: #2a41b4;
+        padding: 15px 0;
+    }
+
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        transition: opacity 0.3s;
+        padding: 5px 0;
+    }
     </style>
 </head>
 <body>
